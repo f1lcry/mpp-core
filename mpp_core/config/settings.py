@@ -40,6 +40,17 @@ def _to_optional(value: Optional[str]) -> Optional[str]:
     return clean or None
 
 
+def _to_bool(value: Optional[str], default: bool) -> bool:
+    if value is None:
+        return default
+    clean = value.strip().lower()
+    if clean in {"1", "true", "yes", "on"}:
+        return True
+    if clean in {"0", "false", "no", "off"}:
+        return False
+    return default
+
+
 @dataclass
 class Settings:
     app_env: str = "dev"
@@ -48,6 +59,9 @@ class Settings:
     target_marketplace: str = "ozon"
     ozon_seller_client_id: Optional[str] = None
     ozon_seller_api_key: Optional[str] = None
+    ozon_seller_base_url: str = "https://api-seller.ozon.ru"
+    ozon_verify_ssl: bool = True
+    ozon_request_timeout_sec: int = 30
 
     @classmethod
     def from_env(cls, env_files: Iterable[str] = _DEFAULT_ENV_FILES) -> "Settings":
@@ -59,6 +73,9 @@ class Settings:
             target_marketplace=os.getenv("MPP_TARGET_MARKETPLACE", "ozon"),
             ozon_seller_client_id=_to_optional(os.getenv("MPP_OZON_SELLER_CLIENT_ID")),
             ozon_seller_api_key=_to_optional(os.getenv("MPP_OZON_SELLER_API_KEY")),
+            ozon_seller_base_url=os.getenv("MPP_OZON_SELLER_BASE_URL", "https://api-seller.ozon.ru").rstrip("/"),
+            ozon_verify_ssl=_to_bool(os.getenv("MPP_OZON_VERIFY_SSL"), default=True),
+            ozon_request_timeout_sec=int(os.getenv("MPP_OZON_REQUEST_TIMEOUT_SEC", "30")),
         )
 
     @property

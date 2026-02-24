@@ -1,0 +1,124 @@
+{
+  "started_at": "2026-02-24T13:23:36.375711+00:00",
+  "requests": [
+    {
+      "timestamp": "2026-02-24T13:23:36.376094+00:00",
+      "step": "category_tree",
+      "endpoint": "/v1/description-category/tree",
+      "payload": {
+        "language": "DEFAULT"
+      }
+    },
+    {
+      "timestamp": "2026-02-24T13:23:41.773226+00:00",
+      "step": "category_attributes",
+      "endpoint": "/v1/description-category/attribute",
+      "payload": {
+        "description_category_id": 17028689,
+        "type_id": 98118,
+        "language": "DEFAULT"
+      }
+    },
+    {
+      "timestamp": "2026-02-24T13:23:41.954588+00:00",
+      "step": "attribute_dictionary_values",
+      "endpoint": "/v1/description-category/attribute/values",
+      "payload": {
+        "description_category_id": 17028689,
+        "type_id": 98118,
+        "attribute_id": 85,
+        "language": "DEFAULT",
+        "last_value_id": 0,
+        "limit": 50
+      }
+    },
+    {
+      "timestamp": "2026-02-24T13:23:42.091089+00:00",
+      "step": "attribute_dictionary_values",
+      "endpoint": "/v1/description-category/attribute/values",
+      "payload": {
+        "description_category_id": 17028689,
+        "type_id": 98118,
+        "attribute_id": 8229,
+        "language": "DEFAULT",
+        "last_value_id": 0,
+        "limit": 50
+      }
+    },
+    {
+      "timestamp": "2026-02-24T13:23:42.200939+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-core-20260224132342-dcca5477",
+            "name": "MPP Core Test Страховка для альпинизма, скалолазанья",
+            "description": "Тестовая карточка MPP Core. Создано: 2026-02-24 13:23:42 UTC",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "images": [
+              "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+            ],
+            "description_category_id": 17028689,
+            "type_id": 98118,
+            "attributes": [
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5058187,
+                    "value": "Юпитер"
+                  }
+                ]
+              },
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "MPP Название модели (для объединения в одну карточку)"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 98118,
+                    "value": "Страховка для альпинизма, скалолазанья"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-02-24T13:23:42.342134+00:00",
+      "step": "import_status",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3817689790
+      }
+    },
+    {
+      "timestamp": "2026-02-24T13:23:45.465430+00:00",
+      "step": "import_status",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3817689790
+      }
+    }
+  ]
+}
