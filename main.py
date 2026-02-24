@@ -41,7 +41,10 @@ def build_orchestrator(settings: Settings) -> PipelineOrchestrator:
     )
 
     payload_builder = OzonPayloadBuilder()
-    exporter = OzonExporter()
+    exporter = OzonExporter(
+        client_id=settings.ozon_seller_client_id,
+        api_key=settings.ozon_seller_api_key,
+    )
 
     product_repository = InMemoryProductRepository()
     event_repository = InMemoryPipelineEventRepository()
