@@ -1,0 +1,44 @@
+{
+  "tape_measure": {
+    "category_id": 17028629,
+    "type_id": 91705,
+    "attributes": {
+      "brand": 85,
+      "model": 9048,
+      "type": 8229
+    },
+    "required_attributes": ["brand", "model", "type"],
+    "default_values": {
+      "brand": "Юпитер",
+      "type": "Измерительная рулетка"
+    }
+  },
+  "screwdriver_set": {
+    "category_id": 17028653,
+    "type_id": 504866257,
+    "attributes": {
+      "brand": 85,
+      "model": 9048,
+      "type": 8229
+    },
+    "required_attributes": ["brand", "model", "type"],
+    "default_values": {
+      "brand": "Юпитер",
+      "type": "Набор отверток"
+    }
+  },
+  "led_lamp": {
+    "category_id": 17028609,
+    "type_id": 91309,
+    "attributes": {
+      "brand": 85,
+      "model": 9048,
+      "type": 8229
+    },
+    "required_attributes": ["brand", "model", "type"],
+    "default_values": {
+      "brand": "Юпитер",
+      "type": "Лампочка"
+    }
+  }
+}

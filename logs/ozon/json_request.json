@@ -1,0 +1,196 @@
+{
+  "timestamp": "2026-02-24T14:38:45.242181+00:00",
+  "endpoint": "/v3/product/import",
+  "payload": {
+    "items": [
+      {
+        "offer_id": "json-tape-measure-20260224143845-d64b56",
+        "name": "Рулетка 5м",
+        "description": "Строительная рулетка для бытового и профессионального использования",
+        "price": "500",
+        "currency_code": "RUB",
+        "description_category_id": 17028629,
+        "type_id": 91705,
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+        ],
+        "attributes": [
+          {
+            "id": 85,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Юпитер"
+              }
+            ]
+          },
+          {
+            "id": 9048,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Рулетка 5м"
+              }
+            ]
+          },
+          {
+            "id": 8229,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Измерительная рулетка"
+              }
+            ]
+          }
+        ],
+        "width": 120,
+        "height": 30,
+        "depth": 120,
+        "dimension_unit": "mm",
+        "weight": 450,
+        "weight_unit": "g"
+      },
+      {
+        "offer_id": "json-tape-measure-20260224143845-ee0bb2",
+        "name": "Рулетка 8м",
+        "description": "Усиленная рулетка с фиксацией полотна",
+        "price": "730",
+        "currency_code": "RUB",
+        "description_category_id": 17028629,
+        "type_id": 91705,
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+        ],
+        "attributes": [
+          {
+            "id": 85,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Юпитер"
+              }
+            ]
+          },
+          {
+            "id": 9048,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Рулетка 8м"
+              }
+            ]
+          },
+          {
+            "id": 8229,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Измерительная рулетка"
+              }
+            ]
+          }
+        ],
+        "width": 120,
+        "height": 30,
+        "depth": 120,
+        "dimension_unit": "mm",
+        "weight": 450,
+        "weight_unit": "g"
+      },
+      {
+        "offer_id": "json-screwdriver-set-20260224143845-c6aa7b",
+        "name": "Набор отверток 6 шт",
+        "description": "Набор крестовых и шлицевых отверток",
+        "price": "890",
+        "currency_code": "RUB",
+        "description_category_id": 17028653,
+        "type_id": 504866257,
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+        ],
+        "attributes": [
+          {
+            "id": 85,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Юпитер"
+              }
+            ]
+          },
+          {
+            "id": 9048,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Набор отверток 6 шт"
+              }
+            ]
+          },
+          {
+            "id": 8229,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Набор отверток"
+              }
+            ]
+          }
+        ],
+        "width": 120,
+        "height": 30,
+        "depth": 120,
+        "dimension_unit": "mm",
+        "weight": 450,
+        "weight_unit": "g"
+      },
+      {
+        "offer_id": "json-led-lamp-20260224143845-dde23c",
+        "name": "LED лампа E27 12W",
+        "description": "Светодиодная лампа нейтрального белого света",
+        "price": "220",
+        "currency_code": "RUB",
+        "description_category_id": 17028609,
+        "type_id": 91309,
+        "images": [
+          "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+        ],
+        "attributes": [
+          {
+            "id": 85,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Юпитер"
+              }
+            ]
+          },
+          {
+            "id": 9048,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "LED лампа E27 12W"
+              }
+            ]
+          },
+          {
+            "id": 8229,
+            "complex_id": 0,
+            "values": [
+              {
+                "value": "Лампочка"
+              }
+            ]
+          }
+        ],
+        "width": 120,
+        "height": 30,
+        "depth": 120,
+        "dimension_unit": "mm",
+        "weight": 450,
+        "weight_unit": "g"
+      }
+    ]
+  }
+}

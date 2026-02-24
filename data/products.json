@@ -1,0 +1,58 @@
+[
+  {
+    "category": "tape_measure",
+    "title": "Рулетка 5м",
+    "description": "Строительная рулетка для бытового и профессионального использования",
+    "price": 500,
+    "attributes": {
+      "brand": "Юпитер",
+      "length": "5m",
+      "color": "black"
+    },
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+    ]
+  },
+  {
+    "category": "tape_measure",
+    "title": "Рулетка 8м",
+    "description": "Усиленная рулетка с фиксацией полотна",
+    "price": 730,
+    "attributes": {
+      "brand": "Юпитер",
+      "length": "8m",
+      "color": "yellow"
+    },
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+    ]
+  },
+  {
+    "category": "screwdriver_set",
+    "title": "Набор отверток 6 шт",
+    "description": "Набор крестовых и шлицевых отверток",
+    "price": 890,
+    "attributes": {
+      "brand": "Юпитер",
+      "pieces": "6",
+      "handle_material": "rubber"
+    },
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+    ]
+  },
+  {
+    "category": "led_lamp",
+    "title": "LED лампа E27 12W",
+    "description": "Светодиодная лампа нейтрального белого света",
+    "price": 220,
+    "attributes": {
+      "brand": "Юпитер",
+      "power": "12W",
+      "color_temperature": "4000K"
+    },
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+    ]
+  }
+]

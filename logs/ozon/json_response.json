@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-02-24T14:38:45.242468+00:00",
+  "import": {
+    "endpoint": "/v3/product/import",
+    "status_code": 200,
+    "response": {
+      "result": {
+        "task_id": 3817898986
+      }
+    }
+  },
+  "info": {
+    "endpoint": "/v1/product/import/info",
+    "response": {
+      "result": {
+        "items": [
+          {
+            "offer_id": "json-tape-measure-20260224143845-d64b56",
+            "product_id": 3643364160,
+            "status": "imported",
+            "errors": []
+          },
+          {
+            "offer_id": "json-tape-measure-20260224143845-ee0bb2",
+            "product_id": 3643364161,
+            "status": "imported",
+            "errors": []
+          },
+          {
+            "offer_id": "json-screwdriver-set-20260224143845-c6aa7b",
+            "product_id": 3643364164,
+            "status": "imported",
+            "errors": []
+          },
+          {
+            "offer_id": "json-led-lamp-20260224143845-dde23c",
+            "product_id": 3643364165,
+            "status": "imported",
+            "errors": []
+          }
+        ],
+        "total": 4
+      }
+    },
+    "status_code": 200
+  },
+  "summary": {
+    "items_count": 4,
+    "task_id": 3817898986,
+    "import_status": "imported",
+    "items": [
+      {
+        "offer_id": "json-tape-measure-20260224143845-d64b56",
+        "status": "imported",
+        "errors": []
+      },
+      {
+        "offer_id": "json-tape-measure-20260224143845-ee0bb2",
+        "status": "imported",
+        "errors": []
+      },
+      {
+        "offer_id": "json-screwdriver-set-20260224143845-c6aa7b",
+        "status": "imported",
+        "errors": []
+      },
+      {
+        "offer_id": "json-led-lamp-20260224143845-dde23c",
+        "status": "imported",
+        "errors": []
+      }
+    ]
+  }
+}
