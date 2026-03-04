@@ -9,6 +9,8 @@ from mpp_core.domain import Category
 from mpp_core.enrichment import EnrichmentService, NoOpImageProcessor, StubAIProvider
 from mpp_core.export import (
     OzonApiClient,
+    OzonDbExportRunner,
+    OzonDbPayloadBuilder,
     OzonExporter,
     OzonJsonImportRunner,
     OzonMvpRunner,
@@ -147,6 +149,40 @@ def run_ozon_json_import() -> None:
     print(f"- items: {result.items_count}")
     print(f"- task_id: {result.task_id}")
     print(f"- status: {result.import_status}")
+    print(f"- request log: {result.request_log_path}")
+    print(f"- response log: {result.response_log_path}")
+
+
+def run_ozon_db_export() -> None:
+    settings = Settings.from_env()
+    if not settings.has_ozon_seller_credentials:
+        raise RuntimeError(
+            "Ozon credentials are required. "
+            "Set MPP_OZON_SELLER_CLIENT_ID and MPP_OZON_SELLER_API_KEY in .env"
+        )
+
+    repository = SqliteProductRepository(db_path=settings.sqlite_db_path)
+    repository.init_db()
+    client = OzonApiClient(
+        client_id=settings.ozon_seller_client_id or "",
+        api_key=settings.ozon_seller_api_key or "",
+        base_url=settings.ozon_seller_base_url,
+        verify_ssl=settings.ozon_verify_ssl,
+        timeout_sec=settings.ozon_request_timeout_sec,
+    )
+    runner = OzonDbExportRunner(
+        settings=settings,
+        repository=repository,
+        client=client,
+        payload_builder=OzonDbPayloadBuilder(),
+        logs_dir=Path("logs/ozon"),
+    )
+    result = runner.run()
+
+    print("Ozon DB export completed")
+    print(f"- selected: {result.selected}")
+    print(f"- exported: {result.exported}")
+    print(f"- failed: {result.failed}")
     print(f"- request log: {result.request_log_path}")
     print(f"- response log: {result.response_log_path}")
 
@@ -385,6 +421,8 @@ if __name__ == "__main__":
         run_ozon_mvp_import()
     elif len(sys.argv) > 1 and sys.argv[1] == "ozon-json-import":
         run_ozon_json_import()
+    elif len(sys.argv) > 1 and sys.argv[1] == "ozon-db-export":
+        run_ozon_db_export()
     elif len(sys.argv) > 1 and sys.argv[1] == "tmapi-test":
         run_tmapi_test()
     elif len(sys.argv) > 1 and sys.argv[1] == "category-map":

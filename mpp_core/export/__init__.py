@@ -1,4 +1,6 @@
 from mpp_core.export.base import BaseMarketplaceExporter
+from mpp_core.export.ozon_db_export_runner import OzonDbExportRunResult, OzonDbExportRunner
+from mpp_core.export.ozon_db_payload_builder import OzonDbPayloadBuilder
 from mpp_core.export.json_import_runner import OzonJsonImportRunResult, OzonJsonImportRunner
 from mpp_core.export.json_payload_builder import JsonPayloadBuilder
 from mpp_core.export.models import ExportResult
@@ -13,6 +15,9 @@ __all__ = [
     "OzonApiClient",
     "OzonApiError",
     "OzonApiResponse",
+    "OzonDbExportRunner",
+    "OzonDbExportRunResult",
+    "OzonDbPayloadBuilder",
     "OzonJsonImportRunner",
     "OzonJsonImportRunResult",
     "JsonPayloadBuilder",

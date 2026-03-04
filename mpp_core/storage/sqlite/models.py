@@ -18,6 +18,7 @@ class ProductRecord:
     ozon_category_id: Optional[int] = None
     category_ozon: Optional[int] = None
     ozon_type_id: Optional[int] = None
+    ozon_offer_id: Optional[str] = None
     price: Optional[float] = None
     status: str = "new"
     created_at: Optional[datetime] = None

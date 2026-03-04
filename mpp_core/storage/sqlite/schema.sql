@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS products (
     ozon_category_id INTEGER,
     category_ozon INTEGER,
     ozon_type_id INTEGER,
+    ozon_offer_id TEXT,
     price REAL,
     status TEXT NOT NULL CHECK (status IN ('new', 'translated', 'mapped', 'ready_for_export', 'exported')),
     created_at TIMESTAMP NOT NULL,

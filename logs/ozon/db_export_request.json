@@ -1,0 +1,83 @@
+{
+  "started_at": "2026-03-04T16:21:22.986554+00:00",
+  "requests": [
+    {
+      "timestamp": "2026-03-04T16:21:27.039805+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+            "name": "Disposable Toothbrush and Toothpaste Hospitality Toiletries Set, Star Hotel and Guesthouse Exclusive Dental Products Wholesale",
+            "description": "Disposable Toothbrush and Toothpaste Hospitality Toiletries Set, Star Hotel and Guesthouse Exclusive Dental Products Wholesale",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 72095144,
+            "type_id": 428974409,
+            "images": [
+              "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Disposable Toothbrush and Toothpaste Hospitality Toiletries Set, Star Hotel and Guesthouse Exclusive Dental Products Wholesale"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 428974409,
+                    "value": "Картридж для аромабудильника"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056165,
+                    "value": "Prima"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      }
+    },
+    {
+      "timestamp": "2026-03-04T16:21:27.677258+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3863048773
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+      "meta": {
+        "attempt": 1
+      }
+    }
+  ]
+}

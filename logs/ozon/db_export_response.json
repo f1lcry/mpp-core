@@ -1,0 +1,74 @@
+{
+  "started_at": "2026-03-04T16:21:22.986554+00:00",
+  "responses": [
+    {
+      "timestamp": "2026-03-04T16:21:27.039750+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "950970972173",
+        "description_category_id": 72095144,
+        "type_id": 428974409,
+        "category_name": "Часы",
+        "type_name": "Картридж для аромабудильника"
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+    },
+    {
+      "timestamp": "2026-03-04T16:21:27.677215+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3863048773
+        }
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+    },
+    {
+      "timestamp": "2026-03-04T16:21:28.386815+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+              "product_id": 3685914608,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+    },
+    {
+      "timestamp": "2026-03-04T16:21:28.390537+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "950970972173",
+        "status": "exported",
+        "ozon_offer_id": "mpp-950970972173-20260304162122-c5cc26"
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+    }
+  ],
+  "summary": {
+    "status": "ok",
+    "sqlite_db_path": "data/mpp_core.db",
+    "selected": 1,
+    "exported": 1,
+    "failed": 0
+  }
+}

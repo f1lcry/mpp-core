@@ -3,6 +3,10 @@ from typing import Any, Optional
 
 from mpp_core.storage.sqlite.database import apply_schema, get_connection
 from mpp_core.storage.sqlite.models import ProductRecord
+from mpp_core.storage.sqlite.product_queries import (
+    get_products_ready_for_export,
+    update_product_status_exported,
+)
 
 _ALLOWED_STATUSES = {
     "new",
@@ -18,6 +22,7 @@ _REQUIRED_PRODUCTS_COLUMNS: dict[str, str] = {
     "internal_category": "TEXT",
     "ozon_category_id": "INTEGER",
     "ozon_type_id": "INTEGER",
+    "ozon_offer_id": "TEXT",
 }
 
 
@@ -182,6 +187,15 @@ class SqliteProductRepository:
             ).fetchall()
         return [self._row_to_product(row) for row in rows if row is not None]
 
+    def get_products_ready_for_export(self, limit: int = 50) -> list[ProductRecord]:
+        self.init_db()
+        with get_connection(self._db_path) as connection:
+            return get_products_ready_for_export(
+                connection=connection,
+                limit=limit,
+                row_mapper=self._row_to_product,
+            )
+
     def update_product_status(self, item_id: str, status: str) -> bool:
         self.init_db()
         self._validate_status(status)
@@ -193,6 +207,17 @@ class SqliteProductRepository:
             )
             connection.commit()
             return cursor.rowcount > 0
+
+    def update_product_status_exported(self, item_id_1688: str, ozon_offer_id: str) -> bool:
+        self.init_db()
+        with get_connection(self._db_path) as connection:
+            updated = update_product_status_exported(
+                connection=connection,
+                item_id_1688=item_id_1688,
+                ozon_offer_id=ozon_offer_id,
+            )
+            connection.commit()
+            return updated
 
     def update_product_translation(self, item_id: str, title_en: Optional[str], title_ru: Optional[str]) -> bool:
         self.init_db()
@@ -337,6 +362,7 @@ class SqliteProductRepository:
             ozon_category_id=read_value("ozon_category_id", "category_ozon"),
             category_ozon=read_value("category_ozon", "ozon_category_id"),
             ozon_type_id=read_value("ozon_type_id"),
+            ozon_offer_id=read_value("ozon_offer_id"),
             price=read_value("price"),
             status=read_value("status") or "new",
             created_at=created_at,
