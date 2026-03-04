@@ -96,6 +96,7 @@ class Settings:
     tmapi_top_limit: int = 10
     tmapi_shop_url: Optional[str] = None
     tmapi_member_id: Optional[str] = None
+    sqlite_db_path: str = "data/mpp_core.db"
 
     @classmethod
     def from_env(cls, env_files: Iterable[str] = _DEFAULT_ENV_FILES) -> "Settings":
@@ -120,6 +121,7 @@ class Settings:
             tmapi_top_limit=max(1, _to_int(os.getenv("MPP_TMAPI_TOP_LIMIT"), default=10)),
             tmapi_shop_url=_to_optional(os.getenv("MPP_TMAPI_SHOP_URL")),
             tmapi_member_id=_to_optional(os.getenv("MPP_TMAPI_MEMBER_ID")),
+            sqlite_db_path=os.getenv("MPP_SQLITE_DB_PATH", "data/mpp_core.db"),
         )
 
     @property

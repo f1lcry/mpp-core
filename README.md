@@ -3,24 +3,25 @@
 Modular MVP-core for marketplace pipeline:
 `1688 ingestion -> compliance -> category/attribute mapping -> AI enrichment -> Ozon export`
 
-Проект на этапе архитектурного каркаса. Основной pipeline все еще работает на заглушках, но добавлены рабочие Ozon-сценарии:
-- `ozon-mvp` — импорт 1 тестового товара через динамический подбор категории/атрибутов;
-- `ozon-json-import` — импорт массива товаров из `data/products.json` через локальный mapping `data/mapping.json`.
+Проект на этапе рабочего MVP-каркаса.
+Сейчас доступны два практических контура:
+- Ozon import-сценарии (`ozon-mvp`, `ozon-json-import`);
+- TMAPI ingestion из 1688 (`tmapi-test`) с сохранением результатов одновременно в JSON и SQLite.
 
 ## 1. Общее описание проекта
 
 `mpp-core` — монолитный модульный backend-ядро для обработки товарных карточек между маркетплейсами.
 
-Цели MVP-основы:
+Цели текущего этапа:
 - зафиксировать доменную модель и этапы пайплайна;
-- изолировать внешние интеграции через интерфейсы;
-- обеспечить простую замену заглушек на реальные адаптеры;
-- сохранить минимальную связанность между слоями.
+- изолировать внешние интеграции через интерфейсы и адаптеры;
+- держать инфраструктурные зависимости (API, storage) вне бизнес-логики;
+- подготовить базу для перехода к полноценному ingestion->pipeline циклу.
 
 Ограничения текущей версии:
-- без реального парсинга 1688;
+- основной `PipelineOrchestrator` все еще демонстрационный (stub ingestion/export внутри pipeline-run);
 - без асинхронности, очередей и микросервисов;
-- без полноценной бизнес-логики (кроме минимального Ozon import flow).
+- без production-grade rule engine и полноценных mapping-management интерфейсов.
 
 ## 2. Архитектура и структура модулей
 
@@ -36,8 +37,10 @@ mpp_core/
 
   ingestion/
     base.py                   # BaseIngestionClient
-    dto.py                    # RawProductDTO, RawSKU
-    alibaba_1688.py           # Alibaba1688Client (stub)
+    dto.py                    # RawProductDTO, RawSKU, Raw1688Product
+    alibaba_1688.py           # Alibaba1688Client (stub for orchestrator demo)
+    tmapi_1688_client.py      # TMAPI HTTP client (real requests)
+    tmapi_1688_ingestion.py   # TMAPI ingestion flow + JSON artifacts
 
   compliance/
     rules.py                  # ComplianceRule + stub-rule
@@ -67,69 +70,110 @@ mpp_core/
   storage/
     repositories.py           # ProductRepository, PipelineEventRepository
     in_memory.py              # in-memory реализации + mapping stores
+    sqlite/
+      database.py             # sqlite connection + first-run schema apply
+      schema.sql              # products table schema
+      models.py               # ProductRecord dataclass
+      product_repository.py   # SqliteProductRepository
 
   pipeline/
     orchestrator.py           # PipelineOrchestrator (линейный пайплайн)
 
-main.py                       # пример запуска на заглушках
+main.py                       # CLI-runner сценарии
+
 data/
-  products.json               # тестовые internal товары (JSON only)
+  products.json               # тестовые internal товары (JSON import)
   mapping.json                # category/attribute mapping (internal -> Ozon)
+  1688_products_raw.json      # raw результат TMAPI ingestion
+  mpp_core.db                 # SQLite база (создается автоматически)
 ```
 
 ### Зависимости между слоями
 - `domain` — центральный слой, не зависит от остальных.
 - `ingestion`, `compliance`, `mapping`, `enrichment`, `export`, `storage` зависят от `domain`.
 - `pipeline` оркестрирует все модули и управляет стадиями/статусами.
-- Внешние интеграции подключаются только через абстракции (`ABC` интерфейсы).
+- База данных подключается через storage-adapter (`storage/sqlite`) и не смешивается с доменной логикой.
 
 ## 3. Текущий статус реализации
 
 Реализовано:
 - базовая модульная структура репозитория;
 - доменные сущности и enum-статусы пайплайна;
-- интерфейсы и заглушки для всех целевых модулей;
-- линейный `PipelineOrchestrator` с управлением статусами продукта;
-- constructor-based dependency injection;
-- in-memory storage адаптеры для локального запуска;
-- демонстрационный запуск в `main.py`;
-- загрузка конфигурации из `.env` / `.env.local` с прокидкой Ozon Seller API ключей в экспортёр.
-- рабочий сценарий `python3 main.py ozon-mvp` для импорта 1 тестового товара в Ozon Seller API;
-- логирование всех запросов/ответов в `logs/ozon/request.json` и `logs/ozon/response.json`.
-- рабочий сценарий `python3 main.py ozon-json-import` для импорта товаров из `data/products.json`;
-- отдельные логи JSON-import в `logs/ozon/json_request.json` и `logs/ozon/json_response.json`.
+- интерфейсы и stub-реализации для демонстрационного pipeline;
+- линейный `PipelineOrchestrator` с управлением стадиями/статусами;
+- загрузка конфигурации из `.env` / `.env.local`;
+- реальный Ozon API-клиент и рабочие сценарии `ozon-mvp`, `ozon-json-import`;
+- TMAPI клиент и рабочий ingestion-сценарий `tmapi-test`;
+- persistency layer на SQLite (`data/mpp_core.db`) для хранения 1688 продуктов;
+- repository pattern для SQLite (`SqliteProductRepository`);
+- upsert логика по уникальному `item_id_1688` для дедупликации входящих товаров;
+- test-scenario `sqlite-test` для проверки БД-слоя;
+- логирование API-артефактов в `logs/1688` и `logs/ozon`.
 
-Проверка:
+Проверка (базовая):
 - `python3 -m compileall -q mpp_core main.py`
 - `python3 main.py`
 - `python3 main.py ozon-mvp`
 - `python3 main.py ozon-json-import`
+- `python3 main.py tmapi-test`
+- `python3 main.py sqlite-test`
 
-## 4. Планируемые модули и фичи
+## 4. Актуальные сценарии запуска
 
-Ближайшие этапы:
-- подключение реального клиента ingestion для 1688;
-- реализация реальных compliance-правил;
-- реализация постоянного хранилища (PostgreSQL + repository adapters);
-- реализация production payload/export для Ozon API;
-- реализация настраиваемых mapping-таблиц;
-- расширение AI enrichment (описания, теги, image pipeline).
+1. Demo pipeline (stub ingestion + in-memory storage):
+```bash
+python3 main.py
+```
+
+2. Ozon MVP import (1 тестовый товар через dynamic category flow):
+```bash
+python3 main.py ozon-mvp
+```
+
+3. Ozon JSON import (`data/products.json` + `data/mapping.json`):
+```bash
+python3 main.py ozon-json-import
+```
+
+4. TMAPI 1688 ingestion:
+- тянет товары из TMAPI;
+- сохраняет raw JSON в `data/1688_products_raw.json`;
+- upsert-ит товары в SQLite (`data/mpp_core.db`, таблица `products`) с уникальностью по `item_id_1688`.
+
+```bash
+python3 main.py tmapi-test
+```
+
+5. SQLite smoke test:
+```bash
+python3 main.py sqlite-test
+```
 
 ## 5. Принятые архитектурные решения
 
 1. Монолитный модульный подход (без микросервисов) для ускорения MVP.
 2. Domain-centric структура: `domain` — единый источник внутренних моделей.
-3. Порты и адаптеры: внешние системы доступны только через интерфейсы.
+3. Порты и адаптеры: внешние системы доступны через интерфейсы/адаптеры.
 4. Конструкторная инъекция зависимостей для явного и тестируемого wiring.
 5. Линейный orchestration flow в одном месте (`PipelineOrchestrator`).
-6. In-memory адаптеры как временные реализации для локального prototyping.
+6. In-memory адаптеры сохраняются для быстрого локального prototyping.
+7. Для раннеров ingestion введен отдельный SQLite storage-адаптер без изменения in-memory pipeline.
 
 ## 6. Changelog
+
+### 2026-03-04
+- Добавлен SQLite storage слой: `mpp_core/storage/sqlite/`.
+- Добавлен `schema.sql` с таблицей `products` и `UNIQUE(item_id_1688)`.
+- Добавлен `ProductRecord` и `SqliteProductRepository` (CRUD + status/category/translation updates).
+- Добавлен env-параметр `MPP_SQLITE_DB_PATH` (дефолт `data/mpp_core.db`).
+- Добавлен CLI-сценарий `python3 main.py sqlite-test`.
+- `tmapi-test` теперь сохраняет ingestion-результат не только в JSON, но и в SQLite.
+- Добавлен upsert для 1688 товаров по `item_id_1688` с дедупликацией повторных запусков.
 
 ### 2026-02-24
 - Добавлена загрузка переменных из `.env` и `.env.local` в `Settings`.
 - Добавлены env-параметры `MPP_OZON_SELLER_CLIENT_ID` и `MPP_OZON_SELLER_API_KEY`.
-- Ozon exporter теперь получает Ozon Seller credentials из конфигурации приложения.
+- Ozon exporter получает credentials из конфигурации приложения.
 - Добавлен шаблон `.env.example`.
 - Добавлен `OzonApiClient` с реальными POST-запросами и auth headers (`Client-Id`, `Api-Key`).
 - Добавлен MVP-runner реального импорта товара в Ozon: категории, обязательные атрибуты, dictionary values, `product/import`, `product/import/info`.
@@ -141,21 +185,21 @@ data/
 ### 2026-02-20
 - Инициализирована архитектурная основа `mpp-core`.
 - Добавлены модули: `ingestion`, `domain`, `compliance`, `mapping`, `enrichment`, `export`, `storage`, `pipeline`, `config`.
-- Добавлены интерфейсы и stub-реализации без бизнес-логики.
+- Добавлены интерфейсы и stub-реализации без production бизнес-логики.
 - Добавлен пример запуска пайплайна на заглушках (`main.py`).
-- README переведен в формат актуального проектного документа.
 
 ## 7. Roadmap
 
-1. `v0.2` — Persistency layer (DB repositories, migrations).
-2. `v0.3` — Реальные rules в compliance и конфигурация наборов правил.
-3. `v0.4` — Production-ready mapping management.
-4. `v0.5` — Реальный Ozon export adapter + error handling.
+1. `v0.2` — Интеграция TMAPI ingestion с основным pipeline (`PipelineOrchestrator`) через устойчивые contracts.
+2. `v0.3` — Реальные compliance rules и конфигурация наборов правил.
+3. `v0.4` — Production-ready mapping management (источник mapping не только JSON).
+4. `v0.5` — Расширение SQLite слоя (pagination/filtering, migrations, транзакционные batch-операции).
 5. `v0.6` — Реальный AI provider adapter + quality controls.
+6. `v0.7` — Production Ozon export adapter с управлением retry/error policy.
 
 ## 8. Правила дальнейшего расширения проекта
 
-1. Любая новая внешняя интеграция добавляется через новый интерфейс + адаптер, без прямых вызовов из `pipeline`.
+1. Любая новая внешняя интеграция добавляется через новый интерфейс + адаптер.
 2. Бизнес-логика не добавляется в инфраструктурные слои (`storage`, `export`, `ingestion`).
 3. Все новые статусы/стадии фиксируются в `domain/enums.py`.
 4. Новые use-case сценарии должны входить через `pipeline` или отдельный orchestration сервис.
@@ -166,88 +210,70 @@ data/
 
 ```bash
 cp .env.example .env
-python3 main.py
+python3 -m compileall -q mpp_core main.py
 ```
 
-Реальный Ozon MVP-сценарий (1 тестовый товар):
-```bash
-python3 main.py ozon-mvp
-```
+### Обязательные env-параметры
 
-JSON import в Ozon (товары из `data/products.json`):
-```bash
-python3 main.py ozon-json-import
-```
-
-Переменные для Ozon Seller API (в `.env`):
+Ozon-сценарии:
 - `MPP_OZON_SELLER_CLIENT_ID`
 - `MPP_OZON_SELLER_API_KEY`
-- `MPP_OZON_SELLER_BASE_URL` (по умолчанию `https://api-seller.ozon.ru`)
-- `MPP_OZON_VERIFY_SSL` (`true`/`false`)
-- `MPP_OZON_REQUEST_TIMEOUT_SEC`
 
-Ожидаемый результат (пример):
-```text
-Processed products: 1
-- 1688-1001 | status=exported | stage=export | export_id=ozon-1688-1001
+TMAPI ingestion:
+- `MPP_TMAPI_TOKEN`
+
+SQLite storage:
+- `MPP_SQLITE_DB_PATH` (по умолчанию `data/mpp_core.db`)
+
+Дополнительно:
+- `MPP_OZON_SELLER_BASE_URL`, `MPP_OZON_VERIFY_SSL`, `MPP_OZON_REQUEST_TIMEOUT_SEC`
+- `MPP_TMAPI_BASE_URL`, `MPP_TMAPI_TIMEOUT_SEC`, `MPP_TMAPI_VERIFY_SSL`
+- `MPP_TMAPI_MODE`, `MPP_TMAPI_CAT_IDS`, `MPP_TMAPI_CATEGORY_PAGES`, `MPP_TMAPI_TOP_LIMIT`, `MPP_TMAPI_SHOP_URL`, `MPP_TMAPI_MEMBER_ID`
+
+## 10. Детали ключевых раннеров
+
+### 10.1 `ozon-json-import`
+
+Назначение:
+- simple bridge для импорта internal JSON-товаров в Ozon.
+
+Вход:
+- `data/products.json`
+- `data/mapping.json`
+
+Выход:
+- `logs/ozon/json_request.json`
+- `logs/ozon/json_response.json`
+
+### 10.2 `tmapi-test` (1688 + SQLite)
+
+Что делает:
+- получает товары из TMAPI (`top_sales` или `shop` режим);
+- пишет raw-данные в `data/1688_products_raw.json`;
+- upsert-ит товары в таблицу `products` в SQLite;
+- уникальность определяется по `item_id_1688`.
+
+Статус новых записей:
+- `new`
+
+Поддерживаемые pipeline-статусы в SQLite:
+- `new`
+- `translated`
+- `mapped`
+- `ready_for_export`
+- `exported`
+
+Проверка после запуска:
+```bash
+python3 main.py tmapi-test
+sqlite3 data/mpp_core.db ".tables"
+sqlite3 data/mpp_core.db "SELECT item_id_1688,status FROM products ORDER BY id DESC LIMIT 20;"
 ```
 
-## 10. JSON Import MVP (`ozon-json-import`)
+### 10.3 `sqlite-test`
 
-Этот слой нужен как простой bridge перед будущим ingestion из 1688 и AI enrichment:
-- вход только из JSON (`data/products.json`);
-- mapping только из JSON (`data/mapping.json`);
-- без БД и без сложной бизнес-логики.
-
-### 10.1 Формат `data/products.json`
-
-```json
-[
-  {
-    "category": "tape_measure",
-    "title": "Рулетка 5м",
-    "description": "Строительная рулетка",
-    "price": 500,
-    "attributes": {
-      "brand": "NoName",
-      "length": "5m",
-      "color": "black"
-    },
-    "images": ["https://example.com/image.jpg"]
-  }
-]
-```
-
-### 10.2 Формат `data/mapping.json`
-
-```json
-{
-  "tape_measure": {
-    "category_id": 17028629,
-    "type_id": 91705,
-    "attributes": {
-      "brand": 85,
-      "model": 9048,
-      "type": 8229
-    },
-    "required_attributes": ["brand", "model", "type"],
-    "default_values": {
-      "brand": "Юпитер",
-      "type": "Измерительная рулетка"
-    }
-  }
-}
-```
-
-### 10.3 Что делает runner
-
-- читает `products.json`;
-- для каждого товара берет mapping по `category`;
-- валидирует обязательные атрибуты;
-- собирает payload items;
-- отправляет `/v3/product/import`;
-- вызывает `/v1/product/import/info` (poll до финального статуса);
-- проверяет, что все items имеют статус `imported` и без `errors`;
-- сохраняет request/response в:
-  - `logs/ozon/json_request.json`
-  - `logs/ozon/json_response.json`
+Smoke-проверка SQLite слоя:
+- создаёт БД и схему;
+- добавляет тестовый товар;
+- читает его обратно;
+- печатает результат в консоль.

@@ -5,6 +5,7 @@ from mpp_core.storage.in_memory import (
     InMemoryProductRepository,
 )
 from mpp_core.storage.repositories import PipelineEvent, PipelineEventRepository, ProductRepository
+from mpp_core.storage.sqlite import ProductRecord, SqliteProductRepository
 
 __all__ = [
     "ProductRepository",
@@ -14,4 +15,6 @@ __all__ = [
     "InMemoryPipelineEventRepository",
     "InMemoryCategoryMappingStore",
     "InMemoryAttributeMappingStore",
+    "ProductRecord",
+    "SqliteProductRepository",
 ]
