@@ -15,7 +15,12 @@ from mpp_core.export import (
     OzonPayloadBuilder,
 )
 from mpp_core.ingestion import Alibaba1688Client, Tmapi1688Client, Tmapi1688IngestionService
-from mpp_core.mapping import AttributeMapper, CategoryMapper
+from mpp_core.mapping import (
+    AttributeMapper,
+    CategoryMapper,
+    CategoryMappingService,
+    CategoryTranslationService,
+)
 from mpp_core.pipeline import PipelineOrchestrator
 from mpp_core.storage import (
     InMemoryAttributeMappingStore,
@@ -217,6 +222,29 @@ def run_tmapi_test() -> None:
         print(f"- warning: {result.warning}")
 
 
+def run_category_map() -> None:
+    settings = Settings.from_env()
+    repository = SqliteProductRepository(db_path=settings.sqlite_db_path)
+    repository.init_db()
+
+    translation_service = CategoryTranslationService()
+    mapping_service = CategoryMappingService()
+
+    translation_result = translation_service.run(repository)
+    mapping_result = mapping_service.run(repository)
+    ready_for_export = CategoryMappingService.promote_to_ready_for_export(repository)
+
+    print("Category translation and mapping completed")
+    print(f"- sqlite db: {settings.sqlite_db_path}")
+    print(f"- translation candidates: {translation_result.candidates}")
+    print(f"- translation translated: {translation_result.translated}")
+    print(f"- translation skipped: {translation_result.skipped}")
+    print(f"- mapping candidates: {mapping_result.candidates}")
+    print(f"- mapping mapped: {mapping_result.mapped}")
+    print(f"- mapping skipped: {mapping_result.skipped}")
+    print(f"- ready_for_export updated: {ready_for_export}")
+
+
 def persist_tmapi_products_to_sqlite(*, output_path: Path, db_path: str) -> dict[str, int]:
     repository = SqliteProductRepository(db_path=db_path)
     repository.init_db()
@@ -239,7 +267,9 @@ def persist_tmapi_products_to_sqlite(*, output_path: Path, db_path: str) -> dict
         repository.upsert_product(
             ProductRecord(
                 item_id_1688=item_id,
+                title=_normalize_string(raw_product.get("title")),
                 title_raw=_normalize_string(raw_product.get("title")),
+                category_path_1688=_normalize_string(raw_product.get("category_id")),
                 category_1688=_normalize_string(raw_product.get("category_id")),
                 price=_extract_price(raw_product),
                 status=status,
@@ -323,7 +353,9 @@ def run_sqlite_test() -> None:
 
     test_product = ProductRecord(
         item_id_1688="test-1688-001",
+        title="Test product title",
         title_raw="Test product title",
+        category_path_1688="1688-test-category",
         category_1688="1688-test-category",
         price=1.0,
         status="new",
@@ -355,6 +387,8 @@ if __name__ == "__main__":
         run_ozon_json_import()
     elif len(sys.argv) > 1 and sys.argv[1] == "tmapi-test":
         run_tmapi_test()
+    elif len(sys.argv) > 1 and sys.argv[1] == "category-map":
+        run_category_map()
     elif len(sys.argv) > 1 and sys.argv[1] == "sqlite-test":
         run_sqlite_test()
     else:

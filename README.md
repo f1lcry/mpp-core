@@ -6,7 +6,8 @@ Modular MVP-core for marketplace pipeline:
 Проект на этапе рабочего MVP-каркаса.
 Сейчас доступны два практических контура:
 - Ozon import-сценарии (`ozon-mvp`, `ozon-json-import`);
-- TMAPI ingestion из 1688 (`tmapi-test`) с сохранением результатов одновременно в JSON и SQLite.
+- TMAPI ingestion из 1688 (`tmapi-test`) с сохранением результатов одновременно в JSON и SQLite;
+- category translation + category mapping слой (`category-map`) для подготовки товаров к `ready_for_export`.
 
 ## 1. Общее описание проекта
 
@@ -51,6 +52,8 @@ mpp_core/
     interfaces.py             # абстракции хранения маппинга
     mappers.py                # CategoryMapper, AttributeMapper
     json_mapping_loader.py    # загрузка mapping.json и lookup по category
+    category_translation.py   # 1688 category_path -> internal_category
+    category_mapping.py       # internal_category -> Ozon category/type
 
   enrichment/
     interfaces.py             # BaseAIProvider, ImageProcessor
@@ -84,6 +87,8 @@ main.py                       # CLI-runner сценарии
 data/
   products.json               # тестовые internal товары (JSON import)
   mapping.json                # category/attribute mapping (internal -> Ozon)
+  category_translation.json   # словарь перевода 1688 category -> internal category
+  category_mapping.json       # словарь internal category -> Ozon ids
   1688_products_raw.json      # raw результат TMAPI ingestion
   mpp_core.db                 # SQLite база (создается автоматически)
 ```
@@ -107,6 +112,8 @@ data/
 - persistency layer на SQLite (`data/mpp_core.db`) для хранения 1688 продуктов;
 - repository pattern для SQLite (`SqliteProductRepository`);
 - upsert логика по уникальному `item_id_1688` для дедупликации входящих товаров;
+- статусный слой category translation/mapping: `new -> translated -> mapped -> ready_for_export`;
+- отдельный runner `category-map` для обработки категорий по SQLite-таблице `products`;
 - test-scenario `sqlite-test` для проверки БД-слоя;
 - логирование API-артефактов в `logs/1688` и `logs/ozon`.
 
@@ -116,6 +123,7 @@ data/
 - `python3 main.py ozon-mvp`
 - `python3 main.py ozon-json-import`
 - `python3 main.py tmapi-test`
+- `python3 main.py category-map`
 - `python3 main.py sqlite-test`
 
 ## 4. Актуальные сценарии запуска
@@ -149,6 +157,16 @@ python3 main.py tmapi-test
 python3 main.py sqlite-test
 ```
 
+6. Category translation + mapping:
+- берёт из SQLite товары со статусами `new` и `translated`;
+- переводит `category_path_1688` в `internal_category`;
+- мэппит `internal_category` в `ozon_category_id` + `ozon_type_id`;
+- переводит `mapped` товары в `ready_for_export`.
+
+```bash
+python3 main.py category-map
+```
+
 ## 5. Принятые архитектурные решения
 
 1. Монолитный модульный подход (без микросервисов) для ускорения MVP.
@@ -169,6 +187,10 @@ python3 main.py sqlite-test
 - Добавлен CLI-сценарий `python3 main.py sqlite-test`.
 - `tmapi-test` теперь сохраняет ingestion-результат не только в JSON, но и в SQLite.
 - Добавлен upsert для 1688 товаров по `item_id_1688` с дедупликацией повторных запусков.
+- Добавлены поля в `products` для category-layer: `internal_category`, `ozon_category_id`, `ozon_type_id`.
+- Добавлены модули `category_translation.py` и `category_mapping.py`.
+- Добавлен CLI-сценарий `python3 main.py category-map`.
+- Добавлены словари `data/category_translation.json` и `data/category_mapping.json`.
 
 ### 2026-02-24
 - Добавлена загрузка переменных из `.env` и `.env.local` в `Settings`.
@@ -252,6 +274,7 @@ SQLite storage:
 - пишет raw-данные в `data/1688_products_raw.json`;
 - upsert-ит товары в таблицу `products` в SQLite;
 - уникальность определяется по `item_id_1688`.
+- заполняет поля `title` и `category_path_1688` для последующего category-layer.
 
 Статус новых записей:
 - `new`
@@ -277,3 +300,19 @@ Smoke-проверка SQLite слоя:
 - добавляет тестовый товар;
 - читает его обратно;
 - печатает результат в консоль.
+
+### 10.4 `category-map`
+
+Что делает:
+- выбирает продукты со статусом `new`;
+- переводит 1688 категорию в `internal_category` через `data/category_translation.json`;
+- выставляет статус `translated`;
+- выбирает продукты со статусом `translated`;
+- мэппит `internal_category` в `ozon_category_id` + `ozon_type_id` через `data/category_mapping.json`;
+- выставляет статус `mapped`, затем `ready_for_export`.
+
+Проверка после запуска:
+```bash
+python3 main.py category-map
+sqlite3 data/mpp_core.db "SELECT item_id_1688,status,internal_category,ozon_category_id,ozon_type_id FROM products ORDER BY id DESC LIMIT 20;"
+```

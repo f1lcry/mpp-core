@@ -1,0 +1,46 @@
+{
+  "tape_measure": {
+    "ozon_category_id": 17028629,
+    "type_id": 91705
+  },
+  "electric_screwdriver": {
+    "ozon_category_id": 17029110,
+    "type_id": 92311
+  },
+  "angle_grinder": {
+    "ozon_category_id": 17030011,
+    "type_id": 92400
+  },
+  "collectible_toys": {
+    "ozon_category_id": 17031866,
+    "type_id": 970661
+  },
+  "shoe_covers": {
+    "ozon_category_id": 17031663,
+    "type_id": 970585
+  },
+  "camping_accessories": {
+    "ozon_category_id": 17032940,
+    "type_id": 971992
+  },
+  "keyboard_switches": {
+    "ozon_category_id": 17034100,
+    "type_id": 973155
+  },
+  "disposable_bed_sheets": {
+    "ozon_category_id": 17034323,
+    "type_id": 973411
+  },
+  "warming_patches": {
+    "ozon_category_id": 17035173,
+    "type_id": 974653
+  },
+  "lighters": {
+    "ozon_category_id": 17035638,
+    "type_id": 975277
+  },
+  "dental_travel_kits": {
+    "ozon_category_id": 17036089,
+    "type_id": 975934
+  }
+}
