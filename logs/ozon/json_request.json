@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-02-24T14:38:45.242181+00:00",
+  "timestamp": "2026-03-03T11:41:33.624153+00:00",
   "endpoint": "/v3/product/import",
   "payload": {
     "items": [
       {
-        "offer_id": "json-tape-measure-20260224143845-d64b56",
+        "offer_id": "json-tape-measure-20260303114133-21eef6",
         "name": "Рулетка 5м",
         "description": "Строительная рулетка для бытового и профессионального использования",
         "price": "500",
@@ -51,7 +51,7 @@
         "weight_unit": "g"
       },
       {
-        "offer_id": "json-tape-measure-20260224143845-ee0bb2",
+        "offer_id": "json-tape-measure-20260303114133-19ed19",
         "name": "Рулетка 8м",
         "description": "Усиленная рулетка с фиксацией полотна",
         "price": "730",
@@ -98,7 +98,7 @@
         "weight_unit": "g"
       },
       {
-        "offer_id": "json-screwdriver-set-20260224143845-c6aa7b",
+        "offer_id": "json-screwdriver-set-20260303114133-088200",
         "name": "Набор отверток 6 шт",
         "description": "Набор крестовых и шлицевых отверток",
         "price": "890",
@@ -145,7 +145,7 @@
         "weight_unit": "g"
       },
       {
-        "offer_id": "json-led-lamp-20260224143845-dde23c",
+        "offer_id": "json-led-lamp-20260303114133-a03c46",
         "name": "LED лампа E27 12W",
         "description": "Светодиодная лампа нейтрального белого света",
         "price": "220",

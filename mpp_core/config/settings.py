@@ -1,5 +1,5 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable, Optional
 
@@ -51,6 +51,30 @@ def _to_bool(value: Optional[str], default: bool) -> bool:
     return default
 
 
+def _to_int(value: Optional[str], default: int) -> int:
+    if value is None:
+        return default
+    try:
+        return int(value.strip())
+    except (TypeError, ValueError):
+        return default
+
+
+def _to_int_list(value: Optional[str]) -> list[int]:
+    if value is None:
+        return []
+    parsed: list[int] = []
+    for raw_part in value.split(","):
+        part = raw_part.strip()
+        if not part:
+            continue
+        try:
+            parsed.append(int(part))
+        except ValueError:
+            continue
+    return parsed
+
+
 @dataclass
 class Settings:
     app_env: str = "dev"
@@ -62,6 +86,16 @@ class Settings:
     ozon_seller_base_url: str = "https://api-seller.ozon.ru"
     ozon_verify_ssl: bool = True
     ozon_request_timeout_sec: int = 30
+    tmapi_token: Optional[str] = None
+    tmapi_base_url: str = "https://api.tmapi.top"
+    tmapi_timeout_sec: int = 30
+    tmapi_verify_ssl: bool = True
+    tmapi_mode: str = "top_sales"
+    tmapi_cat_ids: list[int] = field(default_factory=list)
+    tmapi_category_pages: int = 1
+    tmapi_top_limit: int = 10
+    tmapi_shop_url: Optional[str] = None
+    tmapi_member_id: Optional[str] = None
 
     @classmethod
     def from_env(cls, env_files: Iterable[str] = _DEFAULT_ENV_FILES) -> "Settings":
@@ -76,8 +110,30 @@ class Settings:
             ozon_seller_base_url=os.getenv("MPP_OZON_SELLER_BASE_URL", "https://api-seller.ozon.ru").rstrip("/"),
             ozon_verify_ssl=_to_bool(os.getenv("MPP_OZON_VERIFY_SSL"), default=True),
             ozon_request_timeout_sec=int(os.getenv("MPP_OZON_REQUEST_TIMEOUT_SEC", "30")),
+            tmapi_token=_to_optional(os.getenv("MPP_TMAPI_TOKEN")),
+            tmapi_base_url=os.getenv("MPP_TMAPI_BASE_URL", "https://api.tmapi.top").rstrip("/"),
+            tmapi_timeout_sec=_to_int(os.getenv("MPP_TMAPI_TIMEOUT_SEC"), default=30),
+            tmapi_verify_ssl=_to_bool(os.getenv("MPP_TMAPI_VERIFY_SSL"), default=True),
+            tmapi_mode=os.getenv("MPP_TMAPI_MODE", "top_sales").strip().lower(),
+            tmapi_cat_ids=_to_int_list(os.getenv("MPP_TMAPI_CAT_IDS")),
+            tmapi_category_pages=max(1, _to_int(os.getenv("MPP_TMAPI_CATEGORY_PAGES"), default=1)),
+            tmapi_top_limit=max(1, _to_int(os.getenv("MPP_TMAPI_TOP_LIMIT"), default=10)),
+            tmapi_shop_url=_to_optional(os.getenv("MPP_TMAPI_SHOP_URL")),
+            tmapi_member_id=_to_optional(os.getenv("MPP_TMAPI_MEMBER_ID")),
         )
 
     @property
     def has_ozon_seller_credentials(self) -> bool:
         return bool(self.ozon_seller_client_id and self.ozon_seller_api_key)
+
+    @property
+    def has_tmapi_token(self) -> bool:
+        return bool(self.tmapi_token)
+
+    @property
+    def has_tmapi_shop_selector(self) -> bool:
+        return bool(self.tmapi_shop_url or self.tmapi_member_id)
+
+    @property
+    def has_tmapi_categories(self) -> bool:
+        return bool(self.tmapi_cat_ids)

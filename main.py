@@ -12,7 +12,7 @@ from mpp_core.export import (
     OzonMvpRunner,
     OzonPayloadBuilder,
 )
-from mpp_core.ingestion import Alibaba1688Client
+from mpp_core.ingestion import Alibaba1688Client, Tmapi1688Client, Tmapi1688IngestionService
 from mpp_core.mapping import AttributeMapper, CategoryMapper
 from mpp_core.pipeline import PipelineOrchestrator
 from mpp_core.storage import (
@@ -21,7 +21,6 @@ from mpp_core.storage import (
     InMemoryPipelineEventRepository,
     InMemoryProductRepository,
 )
-
 
 def build_orchestrator(settings: Settings) -> PipelineOrchestrator:
     ingestion_client = Alibaba1688Client(batch_size=settings.ingestion_batch_size)
@@ -143,10 +142,73 @@ def run_ozon_json_import() -> None:
     print(f"- response log: {result.response_log_path}")
 
 
+def run_tmapi_test() -> None:
+    settings = Settings.from_env()
+    if not settings.has_tmapi_token:
+        raise RuntimeError(
+            "TMAPI token is required. "
+            "Set MPP_TMAPI_TOKEN in .env"
+        )
+
+    client = Tmapi1688Client(
+        api_token=settings.tmapi_token or "",
+        base_url=settings.tmapi_base_url,
+        timeout_sec=settings.tmapi_timeout_sec,
+        verify_ssl=settings.tmapi_verify_ssl,
+    )
+    ingestion_service = Tmapi1688IngestionService(client=client)
+
+    if settings.tmapi_mode == "top_sales":
+        if not settings.has_tmapi_categories:
+            raise RuntimeError(
+                "TMAPI category list is required for top_sales mode. "
+                "Set MPP_TMAPI_CAT_IDS in .env"
+            )
+        result = ingestion_service.run_top_sales(
+            cat_ids=settings.tmapi_cat_ids,
+            pages_per_category=settings.tmapi_category_pages,
+            top_limit=settings.tmapi_top_limit,
+            page_size=20,
+            sort="sales",
+            language="en",
+        )
+    elif settings.tmapi_mode == "shop":
+        if not settings.has_tmapi_shop_selector:
+            raise RuntimeError(
+                "TMAPI shop selector is required for shop mode. "
+                "Set MPP_TMAPI_SHOP_URL or MPP_TMAPI_MEMBER_ID in .env"
+            )
+        result = ingestion_service.run(
+            shop_url=settings.tmapi_shop_url,
+            member_id=settings.tmapi_member_id,
+            page=1,
+            page_size=10,
+            sort="sales",
+            limit=settings.tmapi_top_limit,
+        )
+    else:
+        raise RuntimeError(
+            "Unsupported TMAPI mode. "
+            "Use MPP_TMAPI_MODE=top_sales or MPP_TMAPI_MODE=shop"
+        )
+
+    print("TMAPI 1688 ingestion test completed")
+    print(f"- mode: {result.mode}")
+    print(f"- candidates: {result.candidates_count}")
+    print(f"- unique_candidates: {result.unique_candidates_count}")
+    print(f"- products: {result.products_count}")
+    print(f"- output: {result.output_path}")
+    print(f"- api log: {result.api_log_path}")
+    if result.warning:
+        print(f"- warning: {result.warning}")
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "ozon-mvp":
         run_ozon_mvp_import()
     elif len(sys.argv) > 1 and sys.argv[1] == "ozon-json-import":
         run_ozon_json_import()
+    elif len(sys.argv) > 1 and sys.argv[1] == "tmapi-test":
+        run_tmapi_test()
     else:
         run_demo()
