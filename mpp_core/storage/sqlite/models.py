@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
 
@@ -20,6 +20,7 @@ class ProductRecord:
     ozon_type_id: Optional[int] = None
     ozon_offer_id: Optional[str] = None
     price: Optional[float] = None
+    images: list[str] = field(default_factory=list)
     status: str = "new"
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None

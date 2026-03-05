@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-03-05T11:49:23.110303+00:00",
+  "summary": {
+    "reset_deleted": 10,
+    "ingestion_products": 10,
+    "sqlite_persisted": 10,
+    "translated": 10,
+    "translation_fallback": 0,
+    "mapped": 10,
+    "ready_for_export": 10,
+    "exported": 7,
+    "failed_export": 3
+  }
+}

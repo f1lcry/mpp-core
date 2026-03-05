@@ -16,6 +16,7 @@ from mpp_core.export import (
     OzonMvpRunner,
     OzonPayloadBuilder,
 )
+from mpp_core.export.ozon_db_payload_builder import DEFAULT_PLACEHOLDER_IMAGE_URL
 from mpp_core.ingestion import Alibaba1688Client, Tmapi1688Client, Tmapi1688IngestionService
 from mpp_core.mapping import (
     AttributeMapper,
@@ -24,6 +25,8 @@ from mpp_core.mapping import (
     CategoryTranslationService,
 )
 from mpp_core.pipeline import PipelineOrchestrator
+from mpp_core.pipeline.demo_pipeline import DemoPipelineRunner
+from mpp_core.pipeline.image_normalization import normalize_product_images
 from mpp_core.storage import (
     InMemoryAttributeMappingStore,
     InMemoryCategoryMappingStore,
@@ -187,6 +190,20 @@ def run_ozon_db_export() -> None:
     print(f"- response log: {result.response_log_path}")
 
 
+def run_pipeline_demo() -> None:
+    runner = DemoPipelineRunner()
+    result = runner.run()
+
+    print("Pipeline demo result")
+    print(f"- ingestion_products: {result.ingestion_products}")
+    print(f"- translated: {result.translated}")
+    print(f"- translation_fallback: {result.translation_fallback}")
+    print(f"- mapped: {result.mapped}")
+    print(f"- ready_for_export: {result.ready_for_export}")
+    print(f"- exported: {result.exported}")
+    print(f"- failed_export: {result.failed_export}")
+
+
 def run_tmapi_test() -> None:
     settings = Settings.from_env()
     if not settings.has_tmapi_token:
@@ -300,6 +317,10 @@ def persist_tmapi_products_to_sqlite(*, output_path: Path, db_path: str) -> dict
 
         existing = repository.get_product_by_1688_id(item_id)
         status = existing.status if existing is not None else "new"
+        normalized_images = normalize_product_images(
+            raw_product,
+            placeholder_image_url=DEFAULT_PLACEHOLDER_IMAGE_URL,
+        )
         repository.upsert_product(
             ProductRecord(
                 item_id_1688=item_id,
@@ -310,6 +331,11 @@ def persist_tmapi_products_to_sqlite(*, output_path: Path, db_path: str) -> dict
                 price=_extract_price(raw_product),
                 status=status,
             )
+        )
+        repository.replace_product_images(
+            item_id_1688=item_id,
+            image_urls=normalized_images,
+            source="tmapi",
         )
 
         if existing is None:
@@ -423,6 +449,8 @@ if __name__ == "__main__":
         run_ozon_json_import()
     elif len(sys.argv) > 1 and sys.argv[1] == "ozon-db-export":
         run_ozon_db_export()
+    elif len(sys.argv) > 1 and sys.argv[1] == "pipeline-demo":
+        run_pipeline_demo()
     elif len(sys.argv) > 1 and sys.argv[1] == "tmapi-test":
         run_tmapi_test()
     elif len(sys.argv) > 1 and sys.argv[1] == "category-map":

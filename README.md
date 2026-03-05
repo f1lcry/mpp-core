@@ -4,10 +4,11 @@ Modular MVP-core for marketplace pipeline:
 `1688 ingestion -> compliance -> category/attribute mapping -> AI enrichment -> Ozon export`
 
 Проект на этапе рабочего MVP-каркаса.
-Сейчас доступны два практических контура:
+Сейчас доступны практические контуры:
 - Ozon import-сценарии (`ozon-mvp`, `ozon-json-import`, `ozon-db-export`);
 - TMAPI ingestion из 1688 (`tmapi-test`) с сохранением результатов одновременно в JSON и SQLite;
 - category translation + category mapping слой (`category-map`) для подготовки товаров к `ready_for_export`.
+- единый demo pipeline (`pipeline-demo`): `1688 -> SQLite -> translation -> mapping -> Ozon`.
 
 ## 1. Общее описание проекта
 
@@ -83,6 +84,7 @@ mpp_core/
       product_repository.py   # SqliteProductRepository
 
   pipeline/
+    demo_pipeline.py          # demo-runner: reset -> ingestion -> translation -> mapping -> export
     orchestrator.py           # PipelineOrchestrator (линейный пайплайн)
 
 main.py                       # CLI-runner сценарии
@@ -118,7 +120,7 @@ data/
 - статусный слой category translation/mapping: `new -> translated -> mapped -> ready_for_export`;
 - отдельный runner `category-map` для обработки категорий по SQLite-таблице `products`;
 - test-scenario `sqlite-test` для проверки БД-слоя;
-- логирование API-артефактов в `logs/1688` и `logs/ozon`.
+- логирование API-артефактов в `logs/1688`, `logs/mapping` и `logs/ozon`.
 
 Проверка (базовая):
 - `python3 -m compileall -q mpp_core main.py`
@@ -126,6 +128,7 @@ data/
 - `python3 main.py ozon-mvp`
 - `python3 main.py ozon-json-import`
 - `python3 main.py ozon-db-export`
+- `python3 main.py pipeline-demo`
 - `python3 main.py tmapi-test`
 - `python3 main.py category-map`
 - `python3 main.py sqlite-test`
@@ -147,9 +150,20 @@ python3 main.py ozon-mvp
 python3 main.py ozon-json-import
 ```
 
-4. Ozon DB export (SQLite -> Ozon Seller API):
+4. Demo pipeline (full MVP cycle):
+- сбрасывает demo state (`DELETE FROM products`);
+- выполняет TMAPI top_sales ingestion и persist в SQLite;
+- запускает translation + mapping;
+- экспортирует товары в Ozon;
+- пишет этапный summary в `logs/mapping/pipeline_demo.json`.
+
+```bash
+python3 main.py pipeline-demo
+```
+
+5. Ozon DB export (SQLite -> Ozon Seller API):
 - берёт товары со статусом `ready_for_export` из SQLite;
-- формирует payload и отправляет `/v2/product/import`;
+- формирует payload и отправляет `/v3/product/import`;
 - проверяет `/v1/product/import/info`;
 - при успехе переводит товар в `exported`, при ошибке оставляет `ready_for_export`.
 
@@ -157,7 +171,7 @@ python3 main.py ozon-json-import
 python3 main.py ozon-db-export
 ```
 
-5. TMAPI 1688 ingestion:
+6. TMAPI 1688 ingestion:
 - тянет товары из TMAPI;
 - сохраняет raw JSON в `data/1688_products_raw.json`;
 - upsert-ит товары в SQLite (`data/mpp_core.db`, таблица `products`) с уникальностью по `item_id_1688`.
@@ -166,12 +180,12 @@ python3 main.py ozon-db-export
 python3 main.py tmapi-test
 ```
 
-6. SQLite smoke test:
+7. SQLite smoke test:
 ```bash
 python3 main.py sqlite-test
 ```
 
-7. Category translation + mapping:
+8. Category translation + mapping:
 - берёт из SQLite товары со статусами `new` и `translated`;
 - переводит `category_path_1688` в `internal_category`;
 - мэппит `internal_category` в `ozon_category_id` + `ozon_type_id`;
@@ -208,6 +222,7 @@ python3 main.py category-map
 - Добавлены `OzonDbPayloadBuilder` и `OzonDbExportRunner` для экспорта товаров из SQLite в Ozon Seller API.
 - Добавлен SQL-модуль `mpp_core/storage/sqlite/product_queries.py` c выборкой `ready_for_export` и обновлением `exported`.
 - Добавлен CLI-сценарий `python3 main.py ozon-db-export`.
+- Добавлен модуль `mpp_core/pipeline/demo_pipeline.py` и CLI-сценарий `python3 main.py pipeline-demo`.
 
 ### 2026-02-24
 - Добавлена загрузка переменных из `.env` и `.env.local` в `Settings`.

@@ -4,8 +4,11 @@ from typing import Any, Optional
 from mpp_core.storage.sqlite.database import apply_schema, get_connection
 from mpp_core.storage.sqlite.models import ProductRecord
 from mpp_core.storage.sqlite.product_queries import (
-    get_products_ready_for_export,
-    update_product_status_exported,
+    get_product_images as query_get_product_images,
+    get_product_images_by_product_ids,
+    get_products_ready_for_export as query_get_products_ready_for_export,
+    replace_product_images as query_replace_product_images,
+    update_product_status_exported as query_update_product_status_exported,
 )
 
 _ALLOWED_STATUSES = {
@@ -169,13 +172,23 @@ class SqliteProductRepository:
                 "SELECT * FROM products WHERE item_id_1688 = ?",
                 (item_id,),
             ).fetchone()
-        return self._row_to_product(row)
+            product = self._row_to_product(row)
+            if product is None:
+                return None
+            product.images = query_get_product_images(
+                connection=connection,
+                item_id_1688=item_id,
+            )
+            return product
 
     def get_all_products(self) -> list[ProductRecord]:
         self.init_db()
         with get_connection(self._db_path) as connection:
             rows = connection.execute("SELECT * FROM products ORDER BY id ASC").fetchall()
-        return [self._row_to_product(row) for row in rows if row is not None]
+            products = [self._row_to_product(row) for row in rows if row is not None]
+            result = [product for product in products if product is not None]
+            self._attach_images_to_products(connection=connection, products=result)
+            return result
 
     def get_products_by_status(self, status: str) -> list[ProductRecord]:
         self.init_db()
@@ -185,16 +198,21 @@ class SqliteProductRepository:
                 "SELECT * FROM products WHERE status = ? ORDER BY id ASC",
                 (status,),
             ).fetchall()
-        return [self._row_to_product(row) for row in rows if row is not None]
+            products = [self._row_to_product(row) for row in rows if row is not None]
+            result = [product for product in products if product is not None]
+            self._attach_images_to_products(connection=connection, products=result)
+            return result
 
     def get_products_ready_for_export(self, limit: int = 50) -> list[ProductRecord]:
         self.init_db()
         with get_connection(self._db_path) as connection:
-            return get_products_ready_for_export(
+            products = query_get_products_ready_for_export(
                 connection=connection,
                 limit=limit,
                 row_mapper=self._row_to_product,
             )
+            self._attach_images_to_products(connection=connection, products=products)
+            return products
 
     def update_product_status(self, item_id: str, status: str) -> bool:
         self.init_db()
@@ -211,13 +229,38 @@ class SqliteProductRepository:
     def update_product_status_exported(self, item_id_1688: str, ozon_offer_id: str) -> bool:
         self.init_db()
         with get_connection(self._db_path) as connection:
-            updated = update_product_status_exported(
+            updated = query_update_product_status_exported(
                 connection=connection,
                 item_id_1688=item_id_1688,
                 ozon_offer_id=ozon_offer_id,
             )
             connection.commit()
             return updated
+
+    def replace_product_images(
+        self,
+        item_id_1688: str,
+        image_urls: list[str],
+        source: str = "tmapi",
+    ) -> int:
+        self.init_db()
+        with get_connection(self._db_path) as connection:
+            inserted = query_replace_product_images(
+                connection=connection,
+                item_id_1688=item_id_1688,
+                image_urls=image_urls,
+                source=source,
+            )
+            connection.commit()
+            return inserted
+
+    def get_product_images(self, item_id_1688: str) -> list[str]:
+        self.init_db()
+        with get_connection(self._db_path) as connection:
+            return query_get_product_images(
+                connection=connection,
+                item_id_1688=item_id_1688,
+            )
 
     def update_product_translation(self, item_id: str, title_en: Optional[str], title_ru: Optional[str]) -> bool:
         self.init_db()
@@ -364,7 +407,28 @@ class SqliteProductRepository:
             ozon_type_id=read_value("ozon_type_id"),
             ozon_offer_id=read_value("ozon_offer_id"),
             price=read_value("price"),
+            images=[],
             status=read_value("status") or "new",
             created_at=created_at,
             updated_at=updated_at,
         )
+
+    @staticmethod
+    def _attach_images_to_products(
+        *,
+        connection: Any,
+        products: list[ProductRecord],
+    ) -> None:
+        if not products:
+            return
+
+        product_ids = [product.id for product in products if product.id is not None]
+        images_by_product_id = get_product_images_by_product_ids(
+            connection=connection,
+            product_ids=product_ids,
+        )
+        for product in products:
+            if product.id is None:
+                product.images = []
+                continue
+            product.images = list(images_by_product_id.get(product.id, []))

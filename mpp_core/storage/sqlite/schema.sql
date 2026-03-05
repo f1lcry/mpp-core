@@ -20,3 +20,19 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_products_item_id_1688 ON products (item_id_1688);
+
+CREATE TABLE IF NOT EXISTS product_images (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id INTEGER NOT NULL,
+    image_url TEXT NOT NULL,
+    position INTEGER NOT NULL,
+    source TEXT NOT NULL DEFAULT 'tmapi',
+    created_at TIMESTAMP NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_product_images_product_url
+    ON product_images (product_id, image_url);
+
+CREATE INDEX IF NOT EXISTS idx_product_images_product_position
+    ON product_images (product_id, position);

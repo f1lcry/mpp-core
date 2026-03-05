@@ -1,23 +1,273 @@
 {
-  "started_at": "2026-03-04T16:21:22.986554+00:00",
+  "started_at": "2026-03-05T11:48:28.276547+00:00",
   "requests": [
     {
-      "timestamp": "2026-03-04T16:21:27.039805+00:00",
+      "timestamp": "2026-03-05T11:48:28.277255+00:00",
       "step": "product_import",
       "endpoint": "/v3/product/import",
       "payload": {
         "items": [
           {
-            "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+            "offer_id": "mpp-1000367066210-20260305114828-84539f",
+            "name": "Zootopia Blind Bag Unboxing Fun Children's Birthday Gift for Elementary School Students School Stall Luxury Blind Bag Unboxing Fun",
+            "description": "Zootopia Blind Bag Unboxing Fun Children's Birthday Gift for Elementary School Students School Stall Luxury Blind Bag Unboxing Fun",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17031866,
+            "type_id": 970661,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN012T3ect1xdwT1PM912_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01BCGr5U1xdwT1PNU9I_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01xL7HO61xdwT0hfB8c_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01c2FIdJ1xdwT16Qc9B_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01EbQzbo1Y8vFjNIbgG_!!6000000003015-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "MPP Core"
+                  }
+                ]
+              },
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Zootopia Blind Bag Unboxing Fun Children's Birthday Gift for Elementary School Students School Stall Luxury Blind Bag Unboxing Fun"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "collectible_toys"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": false
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:29.258385+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868610575
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:32.858094+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868610575
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:37.873931+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-1000367066210-20260305114828-84539f",
+            "name": "Zootopia Blind Bag Unboxing Fun Children's Birthday Gift for Elementary School Students School Stall Luxury Blind Bag Unboxing Fun",
+            "description": "Zootopia Blind Bag Unboxing Fun Children's Birthday Gift for Elementary School Students School Stall Luxury Blind Bag Unboxing Fun",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN012T3ect1xdwT1PM912_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01BCGr5U1xdwT1PNU9I_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01xL7HO61xdwT0hfB8c_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01c2FIdJ1xdwT16Qc9B_!!2220606396467-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01EbQzbo1Y8vFjNIbgG_!!6000000003015-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Zootopia Blind Bag Unboxing Fun Children's Birthday Gift for Elementary School Students School Stall Luxury Blind Bag Unboxing Fun"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "meta": {
+        "attempt": 2,
+        "fallback_category": true
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:38.511665+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868611285
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:39.163301+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
             "name": "Disposable Toothbrush and Toothpaste Hospitality Toiletries Set, Star Hotel and Guesthouse Exclusive Dental Products Wholesale",
             "description": "Disposable Toothbrush and Toothpaste Hospitality Toiletries Set, Star Hotel and Guesthouse Exclusive Dental Products Wholesale",
             "price": "999",
             "currency_code": "RUB",
             "vat": "0",
-            "description_category_id": 72095144,
-            "type_id": 428974409,
+            "description_category_id": 17039634,
+            "type_id": 971310012,
             "images": [
-              "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+              "https://cbu01.alicdn.com/img/ibank/O1CN01KHXTgT28KDBaenOoa_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01oYVtKg28KD9IyM0Sr_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01biB50Q28KD9GcW9v2_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01oBJfxg28KD9IJbrcq_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01omTFlI28KD8lHikl5_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN016N7bhZ28KDBDxByyi_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01216Sog28KDBP8TqiT_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gLKvBn28KD7zrgXLF_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ZY2lYL28KDAFOwSS2_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01aJgoVx28KD9nY6J6A_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01OD5Y8K28KD8jl67i8_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01sdbaiF28KD9mVLAy3_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01CkinFq28KD8ldPwa5_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01mfdrAA28KD92ebyPP_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01tT5Tfv28KD8m9kufG_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN013E977g28KD9msF4cR_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01zCYqtY28KD80PO2Am_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01s6Y8r728KDAGLhEtZ_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01bJSLn528KD80cVN7p_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN015mYS9128KDAK5bgPJ_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01m8nxX128KDARS6CDM_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01uV2nz128KD9mVMBQI_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN0194P10r28KDALniiuS_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01erJL8U28KD9mN9I3r_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01pXs54n28KD9mPKEEp_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01YcyVb728KDAY62Eq8_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN015O0AQ528KDAbEYkjZ_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN010QpDXj28KDAzWko3k_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01jl2YPr28KDAI2SSoc_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01nxgfxB28KDBFybMaE_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01rz9E0828KDAI5OKuf_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01pAntch28KD7zqf6An_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN012jO8eA28KD9mWoDnV_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01CZhFRI28KDAGnHELX_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01sLj2jK28KD80WE7tN_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01XcsPLp28KD80RIGGJ_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Nbb0a228KD9mNAUyv_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01BJSRJa28KD8l23JaY_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01kVCZkC28KD7yAT7gL_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN011oe9t528KD9mqrtNh_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ogt7lu28KD8m9Y5oo_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01f3LG4V28KDBInsWGi_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01P4uijl28KD9l00Uvf_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01F2rhFR28KD80RIOcN_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01v8dUkn28KD7z5ut1J_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01axqI3u28KD809pq3v_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01W2ECZo28KD80QMNv0_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01QKYrJh28KDBDIdHKe_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Icczu728KDAQdohrM_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01XHRwPT28KD8m18MHO_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN016UyWtd28KD80PkBhD_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01VqhUha28KD80Q3BZM_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01n2c3bG28KD9mNDW64_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01pzNZvB28KD7zBm5ap_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01du3AdJ28KD9m31g2b_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dQ3Wri28KD7zBT5mu_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01sBdLXh28KD8m7wTB4_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01WOwMcc28KD7zrcVpU_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01vMLsGh28KD9mrES2k_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01iDIAwz28KD8l2F43b_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gAtBxT28KD7zzjilw_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01F9KfTb28KD9kzvSlP_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01GIGIoA28KD814Sur7_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01fW3jlm28KDAIXzdaX_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01r5KDwT28KD7zqXqSp_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dDfTBc28KDBEJmTVA_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Rd7VKI28KD80uQ2k7_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ayNTNK28KDAK8b6wq_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01WVIxBs28KDBF9NoJ4_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01xdRPTs28KD9nLZ1K6_!!2218922687913-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01FhxEkz28KDAJhpClH_!!2218922687913-0-cib.jpg"
             ],
             "attributes": [
               {
@@ -30,22 +280,22 @@
                 ]
               },
               {
-                "id": 8229,
-                "complex_id": 0,
-                "values": [
-                  {
-                    "dictionary_value_id": 428974409,
-                    "value": "Картридж для аромабудильника"
-                  }
-                ]
-              },
-              {
                 "id": 85,
                 "complex_id": 0,
                 "values": [
                   {
-                    "dictionary_value_id": 5056165,
-                    "value": "Prima"
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
                   }
                 ]
               }
@@ -60,24 +310,949 @@
         ]
       },
       "item_id_1688": "950970972173",
-      "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
       "meta": {
         "attempt": 1,
         "fallback_category": true
-      }
+      },
+      "images_count": 71
     },
     {
-      "timestamp": "2026-03-04T16:21:27.677258+00:00",
+      "timestamp": "2026-03-05T11:48:39.921810+00:00",
       "step": "import_status_poll",
       "endpoint": "/v1/product/import/info",
       "payload": {
-        "task_id": 3863048773
+        "task_id": 3868611407
       },
       "item_id_1688": "950970972173",
-      "offer_id": "mpp-950970972173-20260304162122-c5cc26",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
       "meta": {
         "attempt": 1
-      }
+      },
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:43.795074+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868611407
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:44.677157+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-978431181426-20260305114844-5573f7",
+            "name": "Nuanbao High-Temperature Warm Patch Baby Patch Hot Compress Self-Heating Outdoor Snow Mountain Climbing Heating Patch Enhanced Cold-Proof Travel",
+            "description": "Nuanbao High-Temperature Warm Patch Baby Patch Hot Compress Self-Heating Outdoor Snow Mountain Climbing Heating Patch Enhanced Cold-Proof Travel",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Ab2VRL1Cw07iTT2Si_!!2213079280144-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01F1iNuq1Cw07jukVRz_!!2213079280144-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01YPqkph1Cw07k9j92S_!!2213079280144-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01j4GTrg1Cw07jRp0CU_!!2213079280144-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gGRFYk1Cw07kTUBnq_!!2213079280144-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Nuanbao High-Temperature Warm Patch Baby Patch Hot Compress Self-Heating Outdoor Snow Mountain Climbing Heating Patch Enhanced Cold-Proof Travel"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:45.416639+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868611815
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:49.220473+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868611815
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:49.871441+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+            "name": "Camping Canopy Tent Pegs Plastic Ground Stakes Beach Nails Camping Outdoor Serrated Threaded Ground Stakes Anti-Slip",
+            "description": "Camping Canopy Tent Pegs Plastic Ground Stakes Beach Nails Camping Outdoor Serrated Threaded Ground Stakes Anti-Slip",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01vgKgJ61F0hQ9WDwDl_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN0143k9hp2LvOAouyTYN_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01g9MMAg2LvOAprdLru_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01UzYyyW2LvOAqMEVxq_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01BHTqrk2LvOAqxDISC_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN0153ipag1F0hQKsQzLF_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01av5PcT2LvOAqxDlkv_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ySXd5H1F0hQBb4lAo_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01jN8rcE2LvOApXKBTu_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gOe9Ml2LvOAoecgn9_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ROmrhD1F0hQCCCPe0_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01vCd7Cc1F0hQDYcrE7_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01aTrzRn2LvOAsptVhU_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01A8A1BS2LvOAoedti9_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dhkWtK2LvOAoegqdM_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01g21SqX1F0hQK1oy3H_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01mUWIY31F0hQB5x1Pb_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01VPZ0dc1F0hQDWspPf_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01w3QyxT2LvOAqnylrw_!!2208742249754-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dOzntE1F0hQLK5JnD_!!988840425-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01g6cjj91F0hQM93w15_!!988840425-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Camping Canopy Tent Pegs Plastic Ground Stakes Beach Nails Camping Outdoor Serrated Threaded Ground Stakes Anti-Slip"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "981454696971",
+      "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 21
+    },
+    {
+      "timestamp": "2026-03-05T11:48:51.019308+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868612228
+      },
+      "item_id_1688": "981454696971",
+      "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 21
+    },
+    {
+      "timestamp": "2026-03-05T11:48:51.859970+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+            "name": "[True Round Toe] Extra Thick Disposable Shoe Covers for Home Indoor Adult Student Computer Room Wear-Resistant Anti-Slip Thickeneded Foot Covers",
+            "description": "[True Round Toe] Extra Thick Disposable Shoe Covers for Home Indoor Adult Student Computer Room Wear-Resistant Anti-Slip Thickeneded Foot Covers",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01K69BGt28rBg8g6kd9_!!2220650927985-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN013n4EqW28rBg9fz3Kr_!!2220650927985-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01BqicGH28rBg8ErOjY_!!2220650927985-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01EsbbKQ28rBg99t6yq_!!2220650927985-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dSOqBk28rBg7mYTpU_!!2220650927985-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Ht2Pe228rBg7LMjLV_!!2220650927985-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "[True Round Toe] Extra Thick Disposable Shoe Covers for Home Indoor Adult Student Computer Room Wear-Resistant Anti-Slip Thickeneded Foot Covers"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:52.517275+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868612368
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:56.284774+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868612368
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:57.210762+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+            "name": "Disposable Shoe Covers, Non-Woven Fabric, Thickened, for Home Use, Indoor Footwear Covers for Students and Adults, Wear-Resistant, Breathable, Dust-Proof, Dust-Free",
+            "description": "Disposable Shoe Covers, Non-Woven Fabric, Thickened, for Home Use, Indoor Footwear Covers for Students and Adults, Wear-Resistant, Breathable, Dust-Proof, Dust-Free",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01LcxfTY1Gh7P76gKhD_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01WzFyiC1Gh7SaHMo9X_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01PAxfX41Gh7bDtbFWk_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01n91nsp1Gh7P8CCQWl_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01HcnuuY2LY24vBH5eO_!!3937219703-0-C2M.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN014H8Mlx1Gh7PCcVGP4_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01JHWjam1Gh7jAtCoGO_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01k55ivb1Gh7P3YQJKo_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01iwpCxH1Gh7PGcBG68_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01djqzlS1Gh7Sel6aGL_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN0145hIvC1Gh7iRbRcWV_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN015o0xDe1Gh7P8sirjr_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01G5MfyJ1Gh7PCca63F_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01CYWAju1Gh7jBHLArT_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01GiBQB61Gh7Scfb29n_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01iHeee11Gh7jAzc2Fd_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01WQNzEl1Gh7Shgogbf_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01PBjwjO1Gh7iDgDwGD_!!2204179590653-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01OS3Isn1Gh7iWdaw7V_!!2204179590653-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Disposable Shoe Covers, Non-Woven Fabric, Thickened, for Home Use, Indoor Footwear Covers for Students and Adults, Wear-Resistant, Breathable, Dust-Proof, Dust-Free"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:48:57.848949+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868612763
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:49:01.436753+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868612763
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:49:02.089651+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+            "name": "Disposable Bed Sheetss Beauty Salon Massage Bed Thickeneded Breathable Waterproof and Oil-Proof Non-Woven Massage Mattress Sheetss Disposable",
+            "description": "Disposable Bed Sheetss Beauty Salon Massage Bed Thickeneded Breathable Waterproof and Oil-Proof Non-Woven Massage Mattress Sheetss Disposable",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ncctgv1SVvQwkB3uJ_!!2217539262253-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01QAA56m1SVvQwRu5MX_!!2217539262253-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01lko9Ti1SVvQqSjacR_!!2217539262253-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01vh3BoA1SVvQvbbxI6_!!2217539262253-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01sf1BAP1SVvQwTltsq_!!2217539262253-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Disposable Bed Sheetss Beauty Salon Massage Bed Thickeneded Breathable Waterproof and Oil-Proof Non-Woven Massage Mattress Sheetss Disposable"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:02.685010+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868613142
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:06.298905+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868613142
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:07.223585+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-989556658744-20260305114907-e6adba",
+            "name": "Factory Direct Delivery Drinkey Green and Black Dust-Proof Mechanical Keyboard Switches Stress-Relief Toy Key Switches Wholesale",
+            "description": "Factory Direct Delivery Drinkey Green and Black Dust-Proof Mechanical Keyboard Switches Stress-Relief Toy Key Switches Wholesale",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gwjtDk1ryCIQfi6lg_!!6000000005699-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01hsWe8y1sRVcyTyxze_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01j0nf7K1sRVcyTzuBR_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01AHCZPD1sRVcsZfpsr_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01w3UKzQ1sRVcyoSrex_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01JSwOTh1sRVcxGrM1d_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN015gWYig1sRVcyuVufD_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01llAlfq1sRVcxgbZ3W_!!2221077525763-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01j0mG8x1sRVcyuXWRQ_!!2221077525763-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Factory Direct Delivery Drinkey Green and Black Dust-Proof Mechanical Keyboard Switches Stress-Relief Toy Key Switches Wholesale"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:07.888396+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868613465
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:11.459068+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868613465
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:12.081357+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+            "name": "♔ 50 Pieces in a Box, Thickeneded Windproof Lighter, Durable Disposable Lighter, Wholesale Customization, Printed Advertising",
+            "description": "♔ 50 Pieces in a Box, Thickeneded Windproof Lighter, Durable Disposable Lighter, Wholesale Customization, Printed Advertising",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN014n5wz21qSlTER7R4Y_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01u2N1TP1qSlTzN5fZm_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01o9pSxU1qSlTxjwOeZ_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN019zy0cV1qSlTyVZ7g8_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01YaDX131qSlT3abjyT_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN014621Po1qSlTWzQ0aN_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01LLW3941qSlTGjzs8q_!!2214274295495-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Bqc9AH1qSlTGjz0BD_!!2214274295495-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "♔ 50 Pieces in a Box, Thickeneded Windproof Lighter, Durable Disposable Lighter, Wholesale Customization, Printed Advertising"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:12.733589+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868613833
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:16.461331+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868613833
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:17.252630+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "payload": {
+        "items": [
+          {
+            "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+            "name": "Coca-Cola Plush Toys Small Figurines Children's Toys Pop Mart Wholesale Trendy Toys Blind Bags Blind Boxes",
+            "description": "Coca-Cola Plush Toys Small Figurines Children's Toys Pop Mart Wholesale Trendy Toys Blind Bags Blind Boxes",
+            "price": "999",
+            "currency_code": "RUB",
+            "vat": "0",
+            "description_category_id": 17039634,
+            "type_id": 971310012,
+            "images": [
+              "https://cbu01.alicdn.com/img/ibank/O1CN01P09Vu12N7aUbq9lYR_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01tqcCD22N7aUdWqFrF_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN014Ocl8i2N7aUXAZk1e_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN013nsZ9e2N7aUcVnu9r_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01wAcpAI2N7aUhV0rje_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ITQTy92N7aTQb78lE_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01CAhG8N2N7aV0LVKm3_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN018UH19M2N7aSvjZmJx_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01HEG6qD2N7aSQDU1zZ_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01r7NAgI2N7aU6ESYvr_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01KRfb0S2N7aTgeieGU_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01zdFvOF2N7aTgZaRKo_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01fsr7ZE2N7aTrIqy3N_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01EKL0zH2N7aUCcZbi6_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN017siX1l2N7aRUogr5C_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01tw5mpV2N7aU7NBoNi_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01saY2632N7aTAnZQlT_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01v0tDAi2N7aTk6AhKH_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01iwguRk2N7aVPUjMhE_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01qNIzwP2N7aUcspXoq_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01L1PiuD2N7aTocp8Hm_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Yg0VVl2N7aRU6hmLg_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01fztyTV2N7aTWF7rrr_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01MMJmpo2N7aTl73gIm_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN018SSF872N7aUAvEpep_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01I52mzl2N7aRTXz2oK_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN013rJsL32N7aSgiUH8P_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01oqw2To2N7aVMo7NSJ_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Jf95n32N7aRTeOw95_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN017eNbHw2N7aRqcwm6t_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN0163fwxu2N7aU9PIka7_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01r7OAFc2N7aRUrMPbo_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01zpP0en2N7aSu4M1kI_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01NToTbw2N7aRTY0vIj_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01nHI3Rf2N7aTDB5PNS_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01teugjd2N7aTgegR0A_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01nlIrQw2N7aTfJtvTo_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01lAeqMo2N7aTk64FXy_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01iYVZ232N7aRTPXvR6_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01bVD8D72N7aUcatmRU_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01FmocNT2N7aTi9mLfW_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN012dxX1T2N7aTfhaAoG_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01b4CaRj2N7aTgnefQQ_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Pv3Vhh2N7aSwGJnvC_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dxHJpV2N7aToIJy3c_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01lhYMWo2N7aV0grSPe_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01V2OTMe2N7aRTePsPe_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gsWZxF2N7aSwGGRpu_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01u5BlyM2N7aTBXe69m_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01YQnJux2N7aTaxuq5g_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01f7SDKw2N7aVESbipC_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dcJLUk2N7aT64w6AG_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN014jm0wu2N7aTgjjA1c_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01cPyBHt2N7aThZ5poL_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN019sJmtg2N7aUcbNGMv_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01G45wAB2N7aUzkTWyo_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01SUyy1X2N7aRmBec91_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01a127zF2N7aRmtBtsd_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN010RXiAB2N7aTsqOomu_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01VViDVd2N7aTC2vgLK_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01aQGAFf2N7aTgegpxJ_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN0172BFs02N7aTjZeIMd_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01124kqi2N7aTQbb57K_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dCKNFa2N7aTmuPUho_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Ir2oVP2N7aTgccAwa_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN016QTPUJ2N7aRUI4GbI_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01uIdZfo2N7aTWA2wok_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01zIDlzu2N7aTRh5rtz_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01xwUfq82N7aThR5Kwy_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01mrMKPM2N7aRUW2Wai_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01QdvIHF2N7aUcardOV_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01YhHGtk2N7aRnTPLvb_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01q5qQuX2N7aRTPYWqk_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01g525yV2N7aRUW2alN_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Y3LAru2N7aVE7d9sK_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01nTRuzI2N7aTVXwnh7_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01rCV8O02N7aStd6n7d_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01uPnZZc2N7aSunufMt_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01p6LyAt2N7aTRR2W4p_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01U36H512N7aUdWugd4_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN016fdFYx2N7aTgjk6FU_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01vtU0HT2N7aTmIOJqs_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01oHiYSh2N7aRVKn3zu_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ZYqydk2N7aTS2t4nD_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01wSOfAp2N7aUC7XhrY_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01ddeynk2N7aTdLH9oY_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01aeD58I2N7aSvqLsmA_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01eTRswU2N7aRU6hqYK_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01cGbNSc2N7aRSQz0xt_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN018iHajJ2N7aRUI6D7t_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01Ye2BBx2N7aTgU9DAH_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01st6RJ82N7aTArU3wb_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN018yFcpu2N7aRVeDSUC_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01akunmS2N7aRUrKXC8_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01g7tL2h2N7aTioYZnZ_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01cE0Ene2N7aU6EVqm3_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01dPBFUZ2N7aRzLobPd_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01xBzu5x2N7aRUofNbX_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01P4BI3L2N7aRTXza3a_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01MIxPfU2N7aRUI715O_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01d0TQEy2N7aTDB7Dcm_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01cNSF122N7aTh7cMf3_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01AmzC882N7aUcEErDI_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01eHGBUV2N7aRVKlaU4_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01gBCAHn2N7aSkUKJpC_!!2216396819916-0-cib.jpg",
+              "https://cbu01.alicdn.com/img/ibank/O1CN01k4AN4Z2N7aRnv9bat_!!2216396819916-0-cib.jpg"
+            ],
+            "attributes": [
+              {
+                "id": 9048,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "value": "Coca-Cola Plush Toys Small Figurines Children's Toys Pop Mart Wholesale Trendy Toys Blind Bags Blind Boxes"
+                  }
+                ]
+              },
+              {
+                "id": 85,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 5056747,
+                    "value": "Hansa"
+                  }
+                ]
+              },
+              {
+                "id": 8229,
+                "complex_id": 0,
+                "values": [
+                  {
+                    "dictionary_value_id": 93826,
+                    "value": "Холодильник"
+                  }
+                ]
+              }
+            ],
+            "width": 120,
+            "height": 30,
+            "depth": 120,
+            "dimension_unit": "mm",
+            "weight": 450,
+            "weight_unit": "g"
+          }
+        ]
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "meta": {
+        "attempt": 1,
+        "fallback_category": true
+      },
+      "images_count": 106
+    },
+    {
+      "timestamp": "2026-03-05T11:49:17.966422+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868614254
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "meta": {
+        "attempt": 1
+      },
+      "images_count": 106
+    },
+    {
+      "timestamp": "2026-03-05T11:49:21.784964+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "payload": {
+        "task_id": 3868614254
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "meta": {
+        "attempt": 2
+      },
+      "images_count": 106
     }
   ]
 }

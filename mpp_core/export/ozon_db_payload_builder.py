@@ -5,12 +5,14 @@ from uuid import uuid4
 
 from mpp_core.storage.sqlite.models import ProductRecord
 
+DEFAULT_PLACEHOLDER_IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
+
 
 class OzonDbPayloadBuilder:
     def __init__(
         self,
         *,
-        default_image_url: str = "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
+        default_image_url: str = DEFAULT_PLACEHOLDER_IMAGE_URL,
         default_price: float = 999.0,
         default_brand: str = "MPP Core",
     ) -> None:

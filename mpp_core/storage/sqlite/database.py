@@ -28,6 +28,7 @@ def get_connection(db_path: Optional[str] = None) -> sqlite3.Connection:
 
     connection = sqlite3.connect(path)
     connection.row_factory = sqlite3.Row
+    connection.execute("PRAGMA foreign_keys = ON")
 
     if is_first_run:
         apply_schema(connection)

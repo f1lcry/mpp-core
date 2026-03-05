@@ -126,6 +126,7 @@ class OzonDbExportRunner:
         return result
 
     def _export_one(self, product: ProductRecord) -> bool:
+        product_images_count = self._count_product_images(product)
         try:
             import_payload = self._payload_builder.build_payload([product])
         except Exception as exc:
@@ -136,6 +137,7 @@ class OzonDbExportRunner:
                 response={"item_id_1688": product.item_id_1688},
                 item_id_1688=product.item_id_1688,
                 error=str(exc),
+                images_count=product_images_count,
             )
             return False
 
@@ -148,6 +150,7 @@ class OzonDbExportRunner:
                 response={"item_id_1688": product.item_id_1688},
                 item_id_1688=product.item_id_1688,
                 error="empty payload items",
+                images_count=product_images_count,
             )
             return False
         base_item_payload = items[0]
@@ -168,11 +171,13 @@ class OzonDbExportRunner:
                     response={"item_id_1688": product.item_id_1688},
                     item_id_1688=product.item_id_1688,
                     error=str(exc),
+                    images_count=product_images_count,
                 )
                 return False
 
             offer_id = str(effective_item_payload["offer_id"])
             import_payload = {"items": [self._to_import_item(effective_item_payload)]}
+            images_count = self._count_item_images(effective_item_payload)
             self._log_request(
                 step="product_import",
                 endpoint=self._IMPORT_ENDPOINT,
@@ -180,6 +185,7 @@ class OzonDbExportRunner:
                 item_id_1688=product.item_id_1688,
                 offer_id=offer_id,
                 meta={"attempt": attempt_index, "fallback_category": use_fallback},
+                images_count=images_count,
             )
 
             try:
@@ -196,6 +202,7 @@ class OzonDbExportRunner:
                     item_id_1688=product.item_id_1688,
                     offer_id=offer_id,
                     error=str(exc),
+                    images_count=images_count,
                 )
                 return False
 
@@ -206,6 +213,7 @@ class OzonDbExportRunner:
                 response=import_response.data,
                 item_id_1688=product.item_id_1688,
                 offer_id=offer_id,
+                images_count=images_count,
             )
 
             task_id = self._extract_task_id(import_response.data)
@@ -218,6 +226,7 @@ class OzonDbExportRunner:
                     item_id_1688=product.item_id_1688,
                     offer_id=offer_id,
                     error=f"task_id not found in {self._IMPORT_ENDPOINT} response",
+                    images_count=images_count,
                 )
                 return False
 
@@ -225,13 +234,18 @@ class OzonDbExportRunner:
                 task_id=task_id,
                 item_id_1688=product.item_id_1688,
                 offer_id=offer_id,
+                images_count=images_count,
             )
             item_status = self._extract_item_status(info_response_data, offer_id=offer_id)
             item_errors = self._extract_item_errors(info_response_data, offer_id=offer_id)
             if item_status in {"imported", "skipped"} and not item_errors:
                 if use_fallback:
                     self._force_fallback_category = True
-                return self._mark_product_exported(product=product, offer_id=offer_id)
+                return self._mark_product_exported(
+                    product=product,
+                    offer_id=offer_id,
+                    images_count=images_count,
+                )
 
             error_codes = [str(error.get("code")) for error in item_errors]
             self._log_response(
@@ -242,6 +256,7 @@ class OzonDbExportRunner:
                 item_id_1688=product.item_id_1688,
                 offer_id=offer_id,
                 error=f"import status={item_status}, errors={','.join(error_codes)}",
+                images_count=images_count,
             )
 
             if not use_fallback and self._has_category_errors(item_errors):
@@ -251,7 +266,13 @@ class OzonDbExportRunner:
 
         return False
 
-    def _mark_product_exported(self, *, product: ProductRecord, offer_id: str) -> bool:
+    def _mark_product_exported(
+        self,
+        *,
+        product: ProductRecord,
+        offer_id: str,
+        images_count: Optional[int] = None,
+    ) -> bool:
         updated = self._repository.update_product_status_exported(
             product.item_id_1688,
             offer_id,
@@ -265,6 +286,7 @@ class OzonDbExportRunner:
                 item_id_1688=product.item_id_1688,
                 offer_id=offer_id,
                 error="failed to update status to exported",
+                images_count=images_count,
             )
             return False
 
@@ -279,6 +301,7 @@ class OzonDbExportRunner:
             },
             item_id_1688=product.item_id_1688,
             offer_id=offer_id,
+            images_count=images_count,
         )
         return True
 
@@ -323,6 +346,7 @@ class OzonDbExportRunner:
             },
             item_id_1688=product.item_id_1688,
             offer_id=str(item_payload.get("offer_id") or ""),
+            images_count=self._count_item_images(item_payload),
         )
         return item_payload
 
@@ -504,6 +528,7 @@ class OzonDbExportRunner:
         task_id: int,
         item_id_1688: str,
         offer_id: str,
+        images_count: Optional[int] = None,
     ) -> Optional[dict[str, Any]]:
         last_response: Optional[dict[str, Any]] = None
         for attempt in range(1, self._status_poll_attempts + 1):
@@ -515,6 +540,7 @@ class OzonDbExportRunner:
                 item_id_1688=item_id_1688,
                 offer_id=offer_id,
                 meta={"attempt": attempt},
+                images_count=images_count,
             )
             try:
                 info_response = self._client.post(
@@ -530,6 +556,7 @@ class OzonDbExportRunner:
                     item_id_1688=item_id_1688,
                     offer_id=offer_id,
                     error=str(exc),
+                    images_count=images_count,
                 )
                 return last_response
 
@@ -541,6 +568,7 @@ class OzonDbExportRunner:
                 response=info_response.data,
                 item_id_1688=item_id_1688,
                 offer_id=offer_id,
+                images_count=images_count,
             )
 
             status = self._extract_item_status(last_response, offer_id=offer_id)
@@ -675,6 +703,7 @@ class OzonDbExportRunner:
         item_id_1688: Optional[str] = None,
         offer_id: Optional[str] = None,
         meta: Optional[dict[str, Any]] = None,
+        images_count: Optional[int] = None,
     ) -> None:
         record: dict[str, Any] = {
             "timestamp": self._now(),
@@ -688,6 +717,8 @@ class OzonDbExportRunner:
             record["offer_id"] = offer_id
         if meta:
             record["meta"] = meta
+        if images_count is not None:
+            record["images_count"] = images_count
         self._requests.append(record)
 
     def _log_response(
@@ -696,10 +727,11 @@ class OzonDbExportRunner:
         step: str,
         endpoint: str,
         status_code: Optional[int],
-        response: Optional[dict[str, Any]],
+        response: Optional[Any],
         item_id_1688: Optional[str] = None,
         offer_id: Optional[str] = None,
         error: Optional[str] = None,
+        images_count: Optional[int] = None,
     ) -> None:
         record: dict[str, Any] = {
             "timestamp": self._now(),
@@ -714,6 +746,8 @@ class OzonDbExportRunner:
             record["offer_id"] = offer_id
         if error:
             record["error"] = error
+        if images_count is not None:
+            record["images_count"] = images_count
         self._responses.append(record)
 
     def _save_logs(self, *, summary: dict[str, Any]) -> None:
@@ -745,3 +779,17 @@ class OzonDbExportRunner:
     @staticmethod
     def _now() -> str:
         return datetime.now(timezone.utc).isoformat()
+
+    @staticmethod
+    def _count_item_images(item_payload: dict[str, Any]) -> int:
+        images = item_payload.get("images")
+        if not isinstance(images, list):
+            return 0
+        return len([image for image in images if str(image).strip()])
+
+    @staticmethod
+    def _count_product_images(product: ProductRecord) -> int:
+        images = getattr(product, "images", [])
+        if not isinstance(images, list):
+            return 0
+        return len([image for image in images if str(image).strip()])

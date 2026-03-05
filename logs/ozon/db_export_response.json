@@ -1,36 +1,22 @@
 {
-  "started_at": "2026-03-04T16:21:22.986554+00:00",
+  "started_at": "2026-03-05T11:48:28.276547+00:00",
   "responses": [
     {
-      "timestamp": "2026-03-04T16:21:27.039750+00:00",
-      "step": "category_fallback",
-      "endpoint": "local",
-      "status_code": null,
-      "response": {
-        "item_id_1688": "950970972173",
-        "description_category_id": 72095144,
-        "type_id": 428974409,
-        "category_name": "Часы",
-        "type_name": "Картридж для аромабудильника"
-      },
-      "item_id_1688": "950970972173",
-      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
-    },
-    {
-      "timestamp": "2026-03-04T16:21:27.677215+00:00",
+      "timestamp": "2026-03-05T11:48:29.258368+00:00",
       "step": "product_import",
       "endpoint": "/v3/product/import",
       "status_code": 200,
       "response": {
         "result": {
-          "task_id": 3863048773
+          "task_id": 3868610575
         }
       },
-      "item_id_1688": "950970972173",
-      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
     },
     {
-      "timestamp": "2026-03-04T16:21:28.386815+00:00",
+      "timestamp": "2026-03-05T11:48:29.856855+00:00",
       "step": "import_status_poll",
       "endpoint": "/v1/product/import/info",
       "status_code": 200,
@@ -38,8 +24,127 @@
         "result": {
           "items": [
             {
-              "offer_id": "mpp-950970972173-20260304162122-c5cc26",
-              "product_id": 3685914608,
+              "offer_id": "mpp-1000367066210-20260305114828-84539f",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:33.513811+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-1000367066210-20260305114828-84539f",
+              "product_id": 0,
+              "status": "failed",
+              "errors": [
+                {
+                  "code": "description_category_not_found",
+                  "field": "description_category_id",
+                  "attribute_id": 0,
+                  "state": "new",
+                  "level": "error",
+                  "description": "Некорректная категория товара",
+                  "attribute_name": "",
+                  "message": "Некорректная категория товара"
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:33.513845+00:00",
+      "step": "product_finalize",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-1000367066210-20260305114828-84539f",
+              "product_id": 0,
+              "status": "failed",
+              "errors": [
+                {
+                  "code": "description_category_not_found",
+                  "field": "description_category_id",
+                  "attribute_id": 0,
+                  "state": "new",
+                  "level": "error",
+                  "description": "Некорректная категория товара",
+                  "attribute_name": "",
+                  "message": "Некорректная категория товара"
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "error": "import status=failed, errors=description_category_not_found",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:37.873867+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "1000367066210",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:38.511588+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868611285
+        }
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:39.156979+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-1000367066210-20260305114828-84539f",
+              "product_id": 3692217281,
               "status": "imported",
               "errors": []
             }
@@ -47,28 +152,893 @@
           "total": 1
         }
       },
-      "item_id_1688": "950970972173",
-      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
     },
     {
-      "timestamp": "2026-03-04T16:21:28.390537+00:00",
+      "timestamp": "2026-03-05T11:48:39.162803+00:00",
       "step": "sqlite_update",
       "endpoint": "sqlite",
       "status_code": null,
       "response": {
-        "item_id_1688": "950970972173",
+        "item_id_1688": "1000367066210",
         "status": "exported",
-        "ozon_offer_id": "mpp-950970972173-20260304162122-c5cc26"
+        "ozon_offer_id": "mpp-1000367066210-20260305114828-84539f"
+      },
+      "item_id_1688": "1000367066210",
+      "offer_id": "mpp-1000367066210-20260305114828-84539f",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:39.163235+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "950970972173",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
       },
       "item_id_1688": "950970972173",
-      "offer_id": "mpp-950970972173-20260304162122-c5cc26"
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:39.921726+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868611407
+        }
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:40.789891+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:44.676616+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+              "product_id": 3692217394,
+              "status": "imported",
+              "errors": [
+                {
+                  "code": "pics_PIC_limit_exceeded",
+                  "field": "picture",
+                  "attribute_id": 0,
+                  "state": "new",
+                  "level": "error",
+                  "description": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки",
+                  "attribute_name": "",
+                  "message": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки"
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:44.676702+00:00",
+      "step": "product_finalize",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+              "product_id": 3692217394,
+              "status": "imported",
+              "errors": [
+                {
+                  "code": "pics_PIC_limit_exceeded",
+                  "field": "picture",
+                  "attribute_id": 0,
+                  "state": "new",
+                  "level": "error",
+                  "description": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки",
+                  "attribute_name": "",
+                  "message": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки"
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "950970972173",
+      "offer_id": "mpp-950970972173-20260305114839-cfe4f9",
+      "error": "import status=imported, errors=pics_PIC_limit_exceeded",
+      "images_count": 71
+    },
+    {
+      "timestamp": "2026-03-05T11:48:44.677107+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "978431181426",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:45.416562+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868611815
+        }
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:46.217724+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-978431181426-20260305114844-5573f7",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:49.862688+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-978431181426-20260305114844-5573f7",
+              "product_id": 3692217788,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:49.871038+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "978431181426",
+        "status": "exported",
+        "ozon_offer_id": "mpp-978431181426-20260305114844-5573f7"
+      },
+      "item_id_1688": "978431181426",
+      "offer_id": "mpp-978431181426-20260305114844-5573f7",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:48:49.871398+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "981454696971",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "981454696971",
+      "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+      "images_count": 21
+    },
+    {
+      "timestamp": "2026-03-05T11:48:51.019239+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868612228
+        }
+      },
+      "item_id_1688": "981454696971",
+      "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+      "images_count": 21
+    },
+    {
+      "timestamp": "2026-03-05T11:48:51.857706+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+              "product_id": 3692218028,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "981454696971",
+      "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+      "images_count": 21
+    },
+    {
+      "timestamp": "2026-03-05T11:48:51.859742+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "981454696971",
+        "status": "exported",
+        "ozon_offer_id": "mpp-981454696971-20260305114849-2bf1de"
+      },
+      "item_id_1688": "981454696971",
+      "offer_id": "mpp-981454696971-20260305114849-2bf1de",
+      "images_count": 21
+    },
+    {
+      "timestamp": "2026-03-05T11:48:51.859948+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "982222588621",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:52.517235+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868612368
+        }
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:53.284246+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:57.210083+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+              "product_id": 3692218093,
+              "status": "imported",
+              "errors": [
+                {
+                  "code": "ML_INCORRECT_VOLUME_WEIGHT",
+                  "field": "weight",
+                  "attribute_id": 0,
+                  "state": "offer_validated",
+                  "level": "error",
+                  "description": "Габариты или вес сильно отличаются от похожих товаров: исправьте их и снова загрузите товар. Если уверены, что всё верно, пришлите артикул в поддержку: Товары и цены → Карточка товара → Наполнение карточки → ОВХ товара (размеры/вес).",
+                  "attribute_name": "",
+                  "message": "Габариты или вес сильно отличаются от похожих товаров: исправьте их и снова загрузите товар. Если уверены, что всё верно, пришлите артикул в поддержку: Товары и цены → Карточка товара → Наполнение карточки → ОВХ товара (размеры/вес)."
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:57.210177+00:00",
+      "step": "product_finalize",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+              "product_id": 3692218093,
+              "status": "imported",
+              "errors": [
+                {
+                  "code": "ML_INCORRECT_VOLUME_WEIGHT",
+                  "field": "weight",
+                  "attribute_id": 0,
+                  "state": "offer_validated",
+                  "level": "error",
+                  "description": "Габариты или вес сильно отличаются от похожих товаров: исправьте их и снова загрузите товар. Если уверены, что всё верно, пришлите артикул в поддержку: Товары и цены → Карточка товара → Наполнение карточки → ОВХ товара (размеры/вес).",
+                  "attribute_name": "",
+                  "message": "Габариты или вес сильно отличаются от похожих товаров: исправьте их и снова загрузите товар. Если уверены, что всё верно, пришлите артикул в поддержку: Товары и цены → Карточка товара → Наполнение карточки → ОВХ товара (размеры/вес)."
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "982222588621",
+      "offer_id": "mpp-982222588621-20260305114851-c0ab23",
+      "error": "import status=imported, errors=ML_INCORRECT_VOLUME_WEIGHT",
+      "images_count": 6
+    },
+    {
+      "timestamp": "2026-03-05T11:48:57.210697+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "984716083896",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:48:57.848890+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868612763
+        }
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:48:58.433752+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:49:02.078187+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+              "product_id": 3692218406,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:49:02.088946+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "984716083896",
+        "status": "exported",
+        "ozon_offer_id": "mpp-984716083896-20260305114857-bf3f7a"
+      },
+      "item_id_1688": "984716083896",
+      "offer_id": "mpp-984716083896-20260305114857-bf3f7a",
+      "images_count": 19
+    },
+    {
+      "timestamp": "2026-03-05T11:49:02.089573+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "985877786563",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:02.684932+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868613142
+        }
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:03.293656+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:07.217309+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+              "product_id": 3692218785,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:07.222944+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "985877786563",
+        "status": "exported",
+        "ozon_offer_id": "mpp-985877786563-20260305114902-9bfb27"
+      },
+      "item_id_1688": "985877786563",
+      "offer_id": "mpp-985877786563-20260305114902-9bfb27",
+      "images_count": 5
+    },
+    {
+      "timestamp": "2026-03-05T11:49:07.223520+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "989556658744",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:07.888320+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868613465
+        }
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:08.453942+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-989556658744-20260305114907-e6adba",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:12.076137+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-989556658744-20260305114907-e6adba",
+              "product_id": 3692219139,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:12.080889+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "989556658744",
+        "status": "exported",
+        "ozon_offer_id": "mpp-989556658744-20260305114907-e6adba"
+      },
+      "item_id_1688": "989556658744",
+      "offer_id": "mpp-989556658744-20260305114907-e6adba",
+      "images_count": 9
+    },
+    {
+      "timestamp": "2026-03-05T11:49:12.081298+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "991592208982",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:12.733539+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868613833
+        }
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:13.456187+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:17.244633+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+              "product_id": 3692219435,
+              "status": "imported",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:17.251227+00:00",
+      "step": "sqlite_update",
+      "endpoint": "sqlite",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "991592208982",
+        "status": "exported",
+        "ozon_offer_id": "mpp-991592208982-20260305114912-6b5c3b"
+      },
+      "item_id_1688": "991592208982",
+      "offer_id": "mpp-991592208982-20260305114912-6b5c3b",
+      "images_count": 8
+    },
+    {
+      "timestamp": "2026-03-05T11:49:17.252378+00:00",
+      "step": "category_fallback",
+      "endpoint": "local",
+      "status_code": null,
+      "response": {
+        "item_id_1688": "994939031237",
+        "description_category_id": 17039634,
+        "type_id": 971310012,
+        "category_name": "Холодильники",
+        "type_name": "Барный холодильник"
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "images_count": 106
+    },
+    {
+      "timestamp": "2026-03-05T11:49:17.966385+00:00",
+      "step": "product_import",
+      "endpoint": "/v3/product/import",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "task_id": 3868614254
+        }
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "images_count": 106
+    },
+    {
+      "timestamp": "2026-03-05T11:49:18.780072+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+              "product_id": 0,
+              "status": "pending",
+              "errors": []
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "images_count": 106
+    },
+    {
+      "timestamp": "2026-03-05T11:49:23.096120+00:00",
+      "step": "import_status_poll",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+              "product_id": 3692219775,
+              "status": "imported",
+              "errors": [
+                {
+                  "code": "pics_PIC_limit_exceeded",
+                  "field": "picture",
+                  "attribute_id": 0,
+                  "state": "new",
+                  "level": "error",
+                  "description": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки",
+                  "attribute_name": "",
+                  "message": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки"
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "images_count": 106
+    },
+    {
+      "timestamp": "2026-03-05T11:49:23.096225+00:00",
+      "step": "product_finalize",
+      "endpoint": "/v1/product/import/info",
+      "status_code": 200,
+      "response": {
+        "result": {
+          "items": [
+            {
+              "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+              "product_id": 3692219775,
+              "status": "imported",
+              "errors": [
+                {
+                  "code": "pics_PIC_limit_exceeded",
+                  "field": "picture",
+                  "attribute_id": 0,
+                  "state": "new",
+                  "level": "error",
+                  "description": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки",
+                  "attribute_name": "",
+                  "message": "Мы не смогли принять все картинки. Максимальное количество дополнительных фото – 29 штук. Уберите лишние картинки"
+                }
+              ]
+            }
+          ],
+          "total": 1
+        }
+      },
+      "item_id_1688": "994939031237",
+      "offer_id": "mpp-994939031237-20260305114917-c77b1b",
+      "error": "import status=imported, errors=pics_PIC_limit_exceeded",
+      "images_count": 106
     }
   ],
   "summary": {
     "status": "ok",
     "sqlite_db_path": "data/mpp_core.db",
-    "selected": 1,
-    "exported": 1,
-    "failed": 0
+    "selected": 10,
+    "exported": 7,
+    "failed": 3
   }
 }
